@@ -1,7 +1,5 @@
 import { pb } from "@/lib/pocketbase";
 import { ItemProductsList } from "@/types/Products";
-import { Card, CardContent } from "@/components/ui/card";
-import { Button } from "@/components/ui/button";
 import {
   Carousel,
   CarouselContent,
@@ -11,13 +9,16 @@ import {
 } from "@/components/ui/carousel";
 import { ArrowLeft, ArrowRight } from "lucide-react";
 import Hero03 from "@/components/hero-03/hero-03";
+import { Card } from "@/components/ui/card";
 
-const DetailProductPage = async ({ params }: { params: { id: string } }) => {
-  const { id } = params;
+type Props = {
+  params: Promise<{ productId: string }>;
+};
+export default async function ({ params }: Props) {
+  const { productId } = await params;
   const record = await pb
     .collection<ItemProductsList>("products")
-    .getOne(id, {});
-
+    .getOne(productId);
   return (
     <>
       <h1 className="mt-6 text-4xl sm:text-5xl md:text-6xl font-bold !leading-[1.2] tracking-tight">
@@ -63,6 +64,4 @@ const DetailProductPage = async ({ params }: { params: { id: string } }) => {
       </div>
     </>
   );
-};
-
-export default DetailProductPage;
+}
