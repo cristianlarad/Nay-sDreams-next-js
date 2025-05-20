@@ -13,13 +13,7 @@ export const Title: React.FC<TitleProps> = ({
   size = "medium",
   scrollY = 0, // Valor por defecto
 }) => {
-  const colors = [
-    "text-purple-500",
-    "text-indigo-500",
-    "text-blue-500",
-    "text-orange-500",
-    "text-red-500",
-  ];
+  const colors = ["text-pink-700"];
 
   const sizeClasses = {
     small: "text-lg sm:text-xl",

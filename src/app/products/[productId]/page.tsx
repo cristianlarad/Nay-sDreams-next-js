@@ -24,7 +24,7 @@ export default async function ({ params }: Props) {
       <h1 className="mt-6 text-4xl sm:text-5xl md:text-6xl font-bold !leading-[1.2] tracking-tight">
         {record.title}
       </h1>
-      <div className="flex  items-center z-0 h-auto">
+      <div className="grid md:flex  items-center z-0 h-auto">
         <div className="max-w-4xl mx-auto mt-8">
           <h3 className="text-lg font-semibold text-white mb-4">
             Galería de imágenes
