@@ -1,5 +1,4 @@
 // src/components/ui/Title.tsx
-import React from "react";
 
 interface TitleProps {
   text?: string;
