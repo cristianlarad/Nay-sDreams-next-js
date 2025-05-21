@@ -1,0 +1,13 @@
+services:
+  - type: web
+    name: nextjs-app
+    runtime: node
+    repo: https://github.com/tuproject/nextjs
+    branch: main
+    buildCommand: npm install && npm run build
+    startCommand: npm start
+    envVars:
+      - key: API_URL
+        value: https://api.tuservicio.com
+      - key: SECRET_KEY
+        sync: false # Puedes definirlo en el dashboard de Render
