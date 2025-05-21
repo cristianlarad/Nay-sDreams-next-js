@@ -7,7 +7,7 @@ services:
     buildCommand: npm install && npm run build
     startCommand: npm start
     envVars:
-      - key: API_URL
-        value: https://api.tuservicio.com
-      - key: SECRET_KEY
+      - key: NEXT_PUBLIC_POCKETBASE_URL
+        value: https://nays-dream.pockethost.io
+      - key: NEXT_PUBLIC_PHONE_NUMBER
         sync: false # Puedes definirlo en el dashboard de Render
