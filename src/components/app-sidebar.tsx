@@ -1,6 +1,12 @@
+import {
+  RiPlanetLine,
+  RiSeedlingLine,
+  RiSettings3Line,
+  RiShoppingBag2Fill,
+} from "@remixicon/react";
+import Link from "next/link";
 import * as React from "react";
 
-import { TeamSwitcher } from "@/components/team-switcher";
 import {
   Sidebar,
   SidebarContent,
@@ -13,21 +19,7 @@ import {
   SidebarMenuButton,
   SidebarMenuItem,
 } from "@/components/sidebar";
-import {
-  RiChat1Line,
-  RiBardLine,
-  RiMickeyLine,
-  RiMicLine,
-  RiCheckDoubleLine,
-  RiBracesLine,
-  RiPlanetLine,
-  RiSeedlingLine,
-  RiSettings3Line,
-  RiProductHuntFill,
-  RiShoppingBag2Fill,
-} from "@remixicon/react";
-import { title } from "process";
-import Link from "next/link";
+import { TeamSwitcher } from "@/components/team-switcher";
 
 // This is sample data.
 const data = {

@@ -5,7 +5,6 @@ import ProductCard from "@/components/products/ProductCard";
 import { pb } from "@/lib/pocketbase";
 import { ItemProductsList } from "@/types/Products";
 
-// eslint-disable-next-line import/no-unused-modules
 export default async function ProductsPage() {
   const records = await pb
     .collection("products")

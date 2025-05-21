@@ -25,6 +25,7 @@ export default function RootLayout({
         >
           <header>
             <Navbar02Page />
+            <div className="flex items-center gap-3"></div>
           </header>
 
           <main className="p-6 pt-20">{children}</main>

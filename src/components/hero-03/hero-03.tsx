@@ -1,8 +1,3 @@
-import { Badge } from "@/components/ui/badge";
-import { Button } from "@/components/ui/button";
-import { ArrowUpRight, CirclePlay } from "lucide-react";
-import React from "react";
-
 interface Hero03Props {
   title: string;
   description: string;
@@ -21,12 +16,6 @@ const Hero03 = ({ description, price }: Hero03Props) => {
           </div>
         </div>
         <p className="mt-6 text-[17px] md:text-lg">{description}</p>
-      </div>
-      <div className="mt-6 flex items-center justify-center gap-4">
-        <Button className="bg-pink-500 hover:bg-pink-600">
-          Comprar
-          <ArrowUpRight className="ml-2 h-4 w-4" />
-        </Button>
       </div>
     </div>
   );

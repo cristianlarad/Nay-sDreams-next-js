@@ -1,11 +1,16 @@
-import { Button } from "@/components/ui/button";
-import { Logo } from "./logo";
-import { NavMenu } from "./nav-menu";
-import { NavigationSheet } from "./navigation-sheet";
-import { User2 } from "lucide-react";
 import Image from "next/image";
 
-const Navbar02Page = () => {
+import { getCurrentUser } from "@/app/actions/auth";
+
+import { AuthDialog } from "../auth.ts/authDialog";
+import UserDropdown from "../user-dropdown";
+
+import { NavMenu } from "./nav-menu";
+import { NavigationSheet } from "./navigation-sheet";
+
+const Navbar02Page = async () => {
+  const user = await getCurrentUser();
+
   return (
     <div className=" bg-background fixed w-full z-50">
       <nav className="h-16 shadow-2xs bg-pink-500 font-bold z-50">
@@ -24,19 +29,21 @@ const Navbar02Page = () => {
             <NavMenu className="hidden md:block" />
           </div>
 
-          <div className="flex items-center gap-3">
-            <Button
-              variant="link"
-              className="hidden text-white sm:inline-flex bg-pink-500 hover:bg-pink-600"
-            >
-              <span className="flex items-center gap-2">
-                <User2 /> Iniciar Sesión
-              </span>
-            </Button>
-
-            {/* Mobile Menu */}
+          <div className=" hidden md:flex items-center gap-3">
+            {user ? (
+              <UserDropdown email={user.email} name={user.name} />
+            ) : (
+              <AuthDialog />
+            )}
           </div>
-          <div className="md:hidden">
+
+          {/* Mobile Menu */}
+          <div className="md:hidden flex items-center space-x-2">
+            {user ? (
+              <UserDropdown email={user.email} name={user.name} />
+            ) : (
+              <AuthDialog />
+            )}
             <NavigationSheet />
           </div>
         </div>
