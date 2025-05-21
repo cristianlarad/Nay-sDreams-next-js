@@ -1,14 +1,33 @@
 import { NextResponse } from "next/server";
 
+import { getPocketBase } from "@/lib/pocketbase";
+
 export async function POST(request: Request) {
   try {
-    const { productId, quantity, total, imageUrl, productTitle } =
-      await request.json();
-
-    console.log(productId, quantity, total, imageUrl, productTitle);
+    const {
+      productId,
+      quantity,
+      total,
+      imageUrl,
+      productTitle,
+      user,
+      aditional,
+    } = await request.json();
+    const pb = await getPocketBase(request.headers.get("cookie"));
+    const response = await pb.collection("pedido").create({
+      productId,
+      quantity,
+      total,
+      imageUrl,
+      productTitle,
+      user,
+      aditional,
+    });
     return NextResponse.json({
       success: true,
-      data: { productId, quantity, total, imageUrl, productTitle },
+      data: {
+        response,
+      },
     });
   } catch (error) {
     console.error("Error creating order:", error);

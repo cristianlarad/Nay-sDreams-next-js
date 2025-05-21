@@ -74,10 +74,9 @@ export default function Pedidos({
 
     const phoneNumber = process.env.NEXT_PUBLIC_PHONE_NUMBER;
 
-    window.open(
-      `https://wa.me/${phoneNumber}?text=${encodeURIComponent(message)}`,
-      "_blank"
-    );
+    window.location.href = `https://wa.me/${phoneNumber}?text=${encodeURIComponent(
+      message
+    )}`;
 
     try {
       const response = await fetch("/api/pedidos", {
@@ -89,6 +88,7 @@ export default function Pedidos({
           imageUrl,
           quantity,
           total,
+          aditional,
           productTitle: title,
           productId: id,
           user: {
