@@ -1,5 +1,8 @@
-import { pb } from "@/lib/pocketbase";
-import { ItemProductsList } from "@/types/Products";
+import { getCurrentUser } from "@/app/actions/auth";
+import { AuthDialog } from "@/components/auth.ts/authDialog";
+import Hero03 from "@/components/hero-03/hero-03";
+import Pedidos from "@/components/products/Pedidos";
+import { Card } from "@/components/ui/card";
 import {
   Carousel,
   CarouselContent,
@@ -7,15 +10,16 @@ import {
   CarouselNext,
   CarouselPrevious,
 } from "@/components/ui/carousel";
-import { ArrowLeft, ArrowRight } from "lucide-react";
-import Hero03 from "@/components/hero-03/hero-03";
-import { Card } from "@/components/ui/card";
+import { pb } from "@/lib/pocketbase";
+import { ItemProductsList } from "@/types/Products";
 
 type Props = {
   params: Promise<{ productId: string }>;
 };
-export default async function ({ params }: Props) {
+
+export default async function Page({ params }: Props) {
   const { productId } = await params;
+  const user = await getCurrentUser();
   const record = await pb
     .collection<ItemProductsList>("products")
     .getOne(productId);
@@ -24,7 +28,7 @@ export default async function ({ params }: Props) {
       <h1 className="mt-6 text-4xl sm:text-5xl md:text-6xl font-bold !leading-[1.2] tracking-tight">
         {record.title}
       </h1>
-      <div className="grid md:flex  items-center z-0 h-auto">
+      <div className="grid lg:flex  items-center z-0 h-auto">
         <div className="max-w-4xl mx-auto mt-8">
           <h3 className="text-lg font-semibold text-white mb-4">
             Galería de imágenes
@@ -33,7 +37,7 @@ export default async function ({ params }: Props) {
             <Carousel className="w-full">
               <CarouselContent className="-ml-1">
                 {record.images.map((image, index) => (
-                  <CarouselItem key={index} className="md:basis-1/2">
+                  <CarouselItem key={index} className="lg:basis-1/2">
                     <div className="relative group">
                       <img
                         src={`https://nays-dream.pockethost.io/api/files/${record.collectionId}/${record.id}/${image}`}
@@ -62,6 +66,24 @@ export default async function ({ params }: Props) {
           price={record.price}
         />
       </div>
+      {user ? (
+        <Pedidos
+          userEmail={user.email}
+          username={user.name}
+          imagesUrl={record.images ?? []}
+          price={record.price ?? 0}
+          title={record.title ?? ""}
+          id={record.id ?? ""}
+          collectionId={record.collectionId ?? ""}
+        />
+      ) : (
+        <div className="flex flex-col items-center justify-center mt-4">
+          <h1 className="text-2xl font-bold mb-4">
+            Por favor, inicia sesión para hacer un pedido
+          </h1>
+          <AuthDialog />
+        </div>
+      )}
     </>
   );
 }

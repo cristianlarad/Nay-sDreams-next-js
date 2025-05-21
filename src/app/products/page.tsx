@@ -1,10 +1,11 @@
-import ProductCard from "@/components/products/ProductCard";
-import ProductCardSkeleton from "@/components/PRoductSkeleton";
-import { pb } from "@/lib/pocketbase";
-import { ItemProductsList } from "@/types/Products";
 import { Suspense } from "react";
 
-const ProductsPage = async () => {
+import ProductCardSkeleton from "@/components/PRoductSkeleton";
+import ProductCard from "@/components/products/ProductCard";
+import { pb } from "@/lib/pocketbase";
+import { ItemProductsList } from "@/types/Products";
+
+export default async function ProductsPage() {
   const records = await pb
     .collection("products")
     .getFullList<ItemProductsList>({
@@ -20,6 +21,4 @@ const ProductsPage = async () => {
       ))}
     </div>
   );
-};
-
-export default ProductsPage;
+}

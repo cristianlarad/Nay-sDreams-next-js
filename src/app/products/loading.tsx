@@ -1,8 +1,9 @@
 "use client";
 import React from "react";
-import { Progress } from "@/components/ui/progress";
 
-const LoadingPage: React.FC = () => {
+import { Progress } from "@/components/ui/progress";
+// eslint-disable-next-line import/no-unused-modules
+export default function Loading() {
   const [progress, setProgress] = React.useState(0);
 
   React.useEffect(() => {
@@ -43,6 +44,4 @@ const LoadingPage: React.FC = () => {
       </div>
     </div>
   );
-};
-
-export default LoadingPage;
+}
