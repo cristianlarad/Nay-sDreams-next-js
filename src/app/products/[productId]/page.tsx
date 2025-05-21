@@ -1,5 +1,5 @@
-import { pb } from "@/lib/pocketbase";
-import { ItemProductsList } from "@/types/Products";
+import Hero03 from "@/components/hero-03/hero-03";
+import { Card } from "@/components/ui/card";
 import {
   Carousel,
   CarouselContent,
@@ -7,14 +7,14 @@ import {
   CarouselNext,
   CarouselPrevious,
 } from "@/components/ui/carousel";
-import { ArrowLeft, ArrowRight } from "lucide-react";
-import Hero03 from "@/components/hero-03/hero-03";
-import { Card } from "@/components/ui/card";
+import { pb } from "@/lib/pocketbase";
+import { ItemProductsList } from "@/types/Products";
 
 type Props = {
   params: Promise<{ productId: string }>;
 };
-export default async function ({ params }: Props) {
+
+export default async function Page({ params }: Props) {
   const { productId } = await params;
   const record = await pb
     .collection<ItemProductsList>("products")

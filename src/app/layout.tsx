@@ -1,9 +1,8 @@
 import { Comic_Neue } from "next/font/google";
 
 import "./globals.css";
-
-import { ThemeProvider } from "@/components/theme-provider";
 import Navbar02Page from "@/components/navbar-02/navbar-02";
+import { ThemeProvider } from "@/components/theme-provider";
 
 const fontSans = Comic_Neue({
   subsets: ["latin"],

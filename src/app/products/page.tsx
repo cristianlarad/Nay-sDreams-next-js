@@ -1,16 +1,19 @@
-import ProductCard from "@/components/products/ProductCard";
-import ProductCardSkeleton from "@/components/PRoductSkeleton";
-import { pb } from "@/lib/pocketbase";
-import { ItemProductsList } from "@/types/Products";
 import { Suspense } from "react";
 
-const ProductsPage = async () => {
+import ProductCardSkeleton from "@/components/PRoductSkeleton";
+import ProductCard from "@/components/products/ProductCard";
+import { pb } from "@/lib/pocketbase";
+import { ItemProductsList } from "@/types/Products";
+
+// eslint-disable-next-line import/no-unused-modules
+export default async function ProductsPage() {
   const records = await pb
     .collection("products")
     .getFullList<ItemProductsList>({
       expand: "*",
     });
   pb.autoCancellation(false);
+  console.log(records);
   return (
     <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-4 gap-y-8">
       {records.map((product) => (
@@ -20,6 +23,4 @@ const ProductsPage = async () => {
       ))}
     </div>
   );
-};
-
-export default ProductsPage;
+}
