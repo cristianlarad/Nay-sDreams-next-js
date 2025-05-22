@@ -1,25 +1,27 @@
 import Link from "next/link";
 import React from "react";
 
-import { ItemProductsList } from "@/types/Products";
+import { IDestacados } from "@/types/Products";
 
 interface ProductCardProps {
-  product: ItemProductsList;
+  product: IDestacados;
 }
 
-const ProductCard = ({ product }: ProductCardProps) => {
+const DestacadosCard = ({ product }: ProductCardProps) => {
   return (
     <div className="w-full shadow-sm  rounded-lg  ">
       <div className="h-[300px] w-full rounded-md">
         <img
-          src={`https://nays-dream.pockethost.io/api/files/${product.collectionId}/${product.id}/${product.images[0]}`}
-          alt={product.title}
+          src={product.imageUrl}
+          alt={product.productTitle}
           className="h-[300px] w-full object-cover rounded-t-md pt-2"
         />
       </div>
       <div className="px-5 pb-5 ">
         <div className="h-[100px] flex flex-col justify-between">
-          <h5 className="text-xl font-semibold mt-4  ">{product.title}</h5>
+          <h5 className="text-xl font-semibold mt-4  ">
+            {product.productTitle}
+          </h5>
           <div className="flex items-center mt-2.5">
             <div className="flex items-center space-x-1 rtl:space-x-reverse">
               <svg
@@ -74,14 +76,9 @@ const ProductCard = ({ product }: ProductCardProps) => {
           </div>
         </div>
         <div className="flex items-center justify-between mt-8">
-          <div className="flex items-center gap-2">
-            <span className="bg-pink-500/20 text-pink-500 text-xs font-medium px-3 py-2 rounded-lg">
-              Precio: ${product.price}
-            </span>
-          </div>
           <div className="flex-shrink-0">
             <Link
-              href={`/products/${product.id}`}
+              href={`/products/${product.productId}`}
               className="focus:outline-none text-white bg-pink-700 hover:bg-pink-800 focus:ring-4 focus:ring-pink-300 font-medium rounded-lg text-sm px-5 py-2.5 mb-2 dark:bg-pink-600 dark:hover:bg-pink-700 dark:focus:ring-pink-900"
             >
               Ver Producto
@@ -93,4 +90,4 @@ const ProductCard = ({ product }: ProductCardProps) => {
   );
 };
 
-export default ProductCard;
+export default DestacadosCard;

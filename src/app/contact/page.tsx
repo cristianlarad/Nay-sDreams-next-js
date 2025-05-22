@@ -1,5 +1,5 @@
 import { RiWhatsappFill } from "@remixicon/react";
-import { Facebook, Instagram, Phone, Mail, MapPin } from "lucide-react";
+import { Facebook, Instagram, Phone, Mail } from "lucide-react";
 
 import MapaContacto from "@/components/map/mapLeaflet";
 
@@ -20,7 +20,11 @@ export default function Contact() {
           </p>
         </div>
         <div className="py-3">
-          <MapaContacto lat={25.7825454} lng={-80.3077963} />
+          <MapaContacto
+            lat={40.7604942321777}
+            zoom={13}
+            lng={-96.6814422607422}
+          />
         </div>
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
           {/* Información de Contacto */}
@@ -43,13 +47,6 @@ export default function Contact() {
                   <p className="text-gray-900 font-medium">
                     contacto@naysdreams.com
                   </p>
-                </div>
-              </div>
-              <div className="flex items-start gap-3">
-                <MapPin className="w-6 h-6 text-pink-500" />
-                <div>
-                  <p className="text-gray-600">Ubicación</p>
-                  <p className="text-gray-900 font-medium">Santo Domingo, RD</p>
                 </div>
               </div>
             </div>

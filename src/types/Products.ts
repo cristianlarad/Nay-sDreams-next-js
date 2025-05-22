@@ -9,3 +9,11 @@ export interface ItemProductsList {
   title: string;
   updated: string;
 }
+
+export interface IDestacados {
+  count: number;
+  productTitle: string;
+  imageUrl: string;
+  id: string;
+  productId: string;
+}

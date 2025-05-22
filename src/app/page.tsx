@@ -3,9 +3,19 @@ import Link from "next/link";
 import { Button } from "@/components/button";
 import MapaContacto from "@/components/map/mapLeaflet";
 import InfoPedidos from "@/components/products/InfoPedidos";
+import DestacadosCard from "@/components/products/destacadosCard";
 import { Title } from "@/components/ui/Title";
+import { IDestacados } from "@/types/Products";
 
-export default function Home() {
+interface ApiResponse {
+  success: boolean;
+  data: IDestacados[];
+}
+export default async function Home() {
+  const response = await fetch(
+    `${process.env.NEXT_PUBLIC_API_URL}/api/destacados`
+  );
+  const { data: destacados = [] } = (await response.json()) as ApiResponse;
   return (
     <div className="min-h-screen bg-white">
       {/* Sección Hero */}
@@ -24,7 +34,11 @@ export default function Home() {
             </p>
             <h1>Ubicación</h1>
             <div className="py-4">
-              <MapaContacto lat={25.7825454} lng={-80.3077963} />
+              <MapaContacto
+                lat={40.7604942321777}
+                zoom={13}
+                lng={-96.6814422607422}
+              />
             </div>
             <div className="grid md:flex  justify-center gap-4">
               <Link href="/products">
@@ -117,16 +131,22 @@ export default function Home() {
       </section>
 
       {/* Sección Destacados */}
-      <section className="py-20">
-        <div className="container mx-auto px-4">
-          <h2 className="text-3xl font-bold text-pink-700 text-center mb-12">
-            Productos Destacados
-          </h2>
-          <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-6">
-            {/* Aquí irán los ProductCards */}
+      {destacados.length !== 0 && (
+        <section className="py-4">
+          <div className="container mx-auto px-4">
+            <h2 className="text-3xl font-bold text-pink-700 text-center mb-12">
+              Productos Destacados
+            </h2>
+            <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-6">
+              {destacados.map((producto) => (
+                <div key={producto.id} className="w-full">
+                  <DestacadosCard product={producto} />
+                </div>
+              ))}
+            </div>
           </div>
-        </div>
-      </section>
+        </section>
+      )}
       <InfoPedidos />
 
       {/* Sección Contacto */}
