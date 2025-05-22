@@ -12,8 +12,20 @@ import {
   SelectValue,
 } from "@/components/ui/select";
 
+import {
+  AlertDialog,
+  AlertDialogAction,
+  AlertDialogCancel,
+  AlertDialogContent,
+  AlertDialogDescription,
+  AlertDialogFooter,
+  AlertDialogHeader,
+  AlertDialogTitle,
+} from "../alert-dialog";
 import { Input } from "../input";
 import { Textarea } from "../ui/textarea";
+
+import InfoPedidos from "./InfoPedidos";
 
 interface IPedidos {
   imagesUrl: string[];
@@ -38,6 +50,7 @@ export default function Pedidos({
   const [quantity, setQuantity] = useState<number>(1);
   const [aditional, setAditional] = useState<string>("");
   const [total, setTotal] = useState<number>(price);
+  const [showConfirmDialog, setShowConfirmDialog] = useState(false);
 
   const handleQuantityChange = (value: string) => {
     const newQuantity = parseInt(value);
@@ -117,11 +130,11 @@ export default function Pedidos({
 
           <div className="space-y-2">
             <label className="text-sm font-medium leading-none">
-              Seleccionar imagen
+              Seleccionar Diseño
             </label>
             <Select onValueChange={handleImageSelect} value={selectedImage}>
               <SelectTrigger>
-                <SelectValue placeholder="Selecciona una imagen" />
+                <SelectValue placeholder="Selecciona un Diseño" />
               </SelectTrigger>
               <SelectContent>
                 {imagesUrl.map((image, index) => (
@@ -131,7 +144,7 @@ export default function Pedidos({
                       alt={title}
                       className="w-10 h-5 object-cover"
                     />
-                    Imagen {index + 1}
+                    Diseño {index + 1}
                   </SelectItem>
                 ))}
               </SelectContent>
@@ -166,12 +179,42 @@ export default function Pedidos({
             </div>
           </div>
         </CardContent>
+
+        <InfoPedidos />
         <CardFooter>
-          <Button type="submit" className="w-full" disabled={!selectedImage}>
+          <Button
+            type="button"
+            onClick={(e) => {
+              e.preventDefault();
+              setShowConfirmDialog(true);
+            }}
+            className="w-full bg-pink-500 hover:bg-pink-600 text-lg"
+            disabled={!selectedImage}
+          >
             Realizar pedido
           </Button>
         </CardFooter>
       </form>
+      <AlertDialog open={showConfirmDialog} onOpenChange={setShowConfirmDialog}>
+        <AlertDialogContent>
+          <AlertDialogHeader>
+            <AlertDialogTitle>¿Confirmar pedido?</AlertDialogTitle>
+            <AlertDialogDescription>
+              Una vez que confirmes, se le atenderá en breve.
+              <InfoPedidos />
+            </AlertDialogDescription>
+          </AlertDialogHeader>
+          <AlertDialogFooter>
+            <AlertDialogCancel>Cancelar</AlertDialogCancel>
+            <AlertDialogAction
+              className="bg-pink-500 hover:bg-pink-600 text-lg"
+              onClick={handleSubmit}
+            >
+              Confirmar pedido
+            </AlertDialogAction>
+          </AlertDialogFooter>
+        </AlertDialogContent>
+      </AlertDialog>
     </Card>
   );
 }

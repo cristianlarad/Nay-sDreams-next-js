@@ -1,4 +1,8 @@
+import Link from "next/link";
+
 import { Button } from "@/components/button";
+import MapaContacto from "@/components/map/mapLeaflet";
+import InfoPedidos from "@/components/products/InfoPedidos";
 import { Title } from "@/components/ui/Title";
 
 export default function Home() {
@@ -18,16 +22,16 @@ export default function Home() {
               Descubre nuestra colección única de productos personalizados con
               sublimación
             </p>
+            <h1>Ubicación</h1>
+            <div className="py-4">
+              <MapaContacto lat={25.7825454} lng={-80.3077963} />
+            </div>
             <div className="grid md:flex  justify-center gap-4">
-              <Button className="bg-pink-700 hover:bg-pink-800 px-8 py-4 text-lg text-white">
-                Explorar Productos
-              </Button>
-              <Button
-                variant="outline"
-                className="border-pink-700 text-pink-700 hover:bg-pink-50 px-8 py-4 text-lg"
-              >
-                Ver Colección
-              </Button>
+              <Link href="/products">
+                <Button className="bg-pink-700 hover:bg-pink-800 px-8 py-4 text-lg text-white">
+                  Explorar Productos
+                </Button>
+              </Link>
             </div>
           </div>
         </div>
@@ -123,6 +127,7 @@ export default function Home() {
           </div>
         </div>
       </section>
+      <InfoPedidos />
 
       {/* Sección Contacto */}
       <section className="py-20 bg-pink-50">

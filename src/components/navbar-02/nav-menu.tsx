@@ -1,11 +1,12 @@
+import { NavigationMenuProps } from "@radix-ui/react-navigation-menu";
+import Link from "next/link";
+
 import {
   NavigationMenu,
   NavigationMenuItem,
   NavigationMenuLink,
   NavigationMenuList,
 } from "@/components/ui/navigation-menu";
-import { NavigationMenuProps } from "@radix-ui/react-navigation-menu";
-import Link from "next/link";
 
 export const NavMenu = (props: NavigationMenuProps) => (
   <NavigationMenu {...props}>
@@ -33,7 +34,7 @@ export const NavMenu = (props: NavigationMenuProps) => (
       </NavigationMenuItem>
       <NavigationMenuItem>
         <NavigationMenuLink asChild>
-          <Link href="#" className="text-lg">
+          <Link href="/contact" className="text-lg">
             Contacto
           </Link>
         </NavigationMenuLink>
