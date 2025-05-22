@@ -3,19 +3,10 @@ import Link from "next/link";
 import { Button } from "@/components/button";
 import MapaContacto from "@/components/map/mapLeaflet";
 import InfoPedidos from "@/components/products/InfoPedidos";
-import DestacadosCard from "@/components/products/destacadosCard";
+import Destacadoslist from "@/components/products/destacadoslist";
 import { Title } from "@/components/ui/Title";
-import { IDestacados } from "@/types/Products";
 
-interface ApiResponse {
-  success: boolean;
-  data: IDestacados[];
-}
 export default async function Home() {
-  const response = await fetch(
-    `${process.env.NEXT_PUBLIC_API_URL}/api/destacados`
-  );
-  const { data: destacados = [] } = (await response.json()) as ApiResponse;
   return (
     <div className="min-h-screen bg-white">
       {/* Sección Hero */}
@@ -131,22 +122,7 @@ export default async function Home() {
       </section>
 
       {/* Sección Destacados */}
-      {destacados.length !== 0 && (
-        <section className="py-4">
-          <div className="container mx-auto px-4">
-            <h2 className="text-3xl font-bold text-pink-700 text-center mb-12">
-              Productos Destacados
-            </h2>
-            <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-6">
-              {destacados.map((producto) => (
-                <div key={producto.id} className="w-full">
-                  <DestacadosCard product={producto} />
-                </div>
-              ))}
-            </div>
-          </div>
-        </section>
-      )}
+      <Destacadoslist />
       <InfoPedidos />
 
       {/* Sección Contacto */}
