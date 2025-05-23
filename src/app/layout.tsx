@@ -1,3 +1,4 @@
+import { Metadata } from "next";
 import { Comic_Neue } from "next/font/google";
 
 import "./globals.css";
@@ -9,13 +10,18 @@ const fontSans = Comic_Neue({
   weight: ["400", "700"],
 });
 
+export const metadata: Metadata = {
+  title: "Nay's Dreams",
+  description: "Descubre nuestra colección de ropa y accesorios únicos",
+};
+
 export default function RootLayout({
   children,
 }: Readonly<{
   children: React.ReactNode;
 }>) {
   return (
-    <html lang="en" suppressHydrationWarning>
+    <html lang="en" suppressHydrationWarning title="Nay's Dreams">
       <body className={`${fontSans.className}  antialiased`}>
         <ThemeProvider
           attribute="class"

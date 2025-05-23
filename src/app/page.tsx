@@ -4,7 +4,7 @@ import { Button } from "@/components/button";
 import MapaContacto from "@/components/map/mapLeaflet";
 import InfoPedidos from "@/components/products/InfoPedidos";
 import Destacadoslist from "@/components/products/destacadoslist";
-import { Title } from "@/components/ui/Title";
+import TitleNays from "@/components/titleNays";
 
 export default async function Home() {
   return (
@@ -13,11 +13,11 @@ export default async function Home() {
       <section className="relative py-20">
         <div className="container mx-auto px-4">
           <div className="max-w-4xl mx-auto text-center">
-            <div className="grid">
+            <div className="grid items-center justify-center">
               <h1 className="text-4xl sm:text-5xl md:text-6xl font-bold text-pink-700 mb-6">
                 ¡Bienvenido a
               </h1>
-              <Title text="Nay's Dreams" />
+              <TitleNays />
             </div>
             <p className="text-xl text-gray-600 mb-8">
               Descubre nuestra colección única de productos personalizados con
@@ -126,55 +126,6 @@ export default async function Home() {
       <InfoPedidos />
 
       {/* Sección Contacto */}
-      <section className="py-20 bg-pink-50">
-        <div className="container mx-auto px-4">
-          <div className="max-w-2xl mx-auto text-center">
-            <h2 className="text-3xl font-bold text-pink-900 mb-6">
-              ¡Contáctanos!
-            </h2>
-            <p className="text-gray-600 mb-8">
-              ¿Tienes alguna pregunta? No dudes en contactarnos
-            </p>
-            <div className="flex justify-center gap-6">
-              <Button className="bg-pink-700 hover:bg-pink-800 px-6 py-3 text-white">
-                <svg
-                  className="w-5 h-5 mr-2"
-                  fill="none"
-                  stroke="currentColor"
-                  viewBox="0 0 24 24"
-                >
-                  <path
-                    strokeLinecap="round"
-                    strokeLinejoin="round"
-                    strokeWidth={2}
-                    d="M3 5a2 2 0 012-2h3.28a1 1 0 01.948.684l1.498 4.493a1 1 0 01-.502 1.21l-2.257 1.13a11.042 11.042 0 005.516 5.516l1.13-2.257a1 1 0 011.21-.502l4.493 1.498a1 1 0 01.684.949V19a2 2 0 01-2 2h-1C9.716 21 3 14.284 3 6V5z"
-                  />
-                </svg>
-                WhatsApp
-              </Button>
-              <Button
-                variant="outline"
-                className="border-pink-700 text-pink-700 hover:bg-pink-50 px-6 py-3"
-              >
-                <svg
-                  className="w-5 h-5 mr-2"
-                  fill="none"
-                  stroke="currentColor"
-                  viewBox="0 0 24 24"
-                >
-                  <path
-                    strokeLinecap="round"
-                    strokeLinejoin="round"
-                    strokeWidth={2}
-                    d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z"
-                  />
-                </svg>
-                Email
-              </Button>
-            </div>
-          </div>
-        </div>
-      </section>
     </div>
   );
 }
