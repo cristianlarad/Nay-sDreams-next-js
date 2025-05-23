@@ -138,19 +138,35 @@ export default function Pedidos({
               Seleccionar Diseño
             </label>
             <Select onValueChange={handleImageSelect} value={selectedImage}>
-              <SelectTrigger>
-                <SelectValue placeholder="Selecciona un Diseño" />
+              <SelectTrigger className="flex items-center gap-2">
+                {selectedImage ? (
+                  <div className="flex items-center gap-2">
+                    {/* eslint-disable-next-line @next/next/no-img-element */}
+                    <img
+                      src={`https://nays-dream.pockethost.io/api/files/${collectionId}/${id}/${selectedImage}`}
+                      alt={title}
+                      className="w-6 h-6 object-cover rounded-sm"
+                    />
+                    <span>Diseño {imagesUrl.indexOf(selectedImage) + 1}</span>
+                  </div>
+                ) : (
+                  <SelectValue placeholder="Selecciona un Diseño" />
+                )}
               </SelectTrigger>
               <SelectContent>
                 {imagesUrl.map((image, index) => (
-                  <SelectItem key={index} value={image}>
+                  <SelectItem
+                    key={index}
+                    value={image}
+                    className="flex items-center gap-2"
+                  >
                     {/* eslint-disable-next-line @next/next/no-img-element */}
                     <img
                       src={`https://nays-dream.pockethost.io/api/files/${collectionId}/${id}/${image}`}
                       alt={title}
-                      className="w-10 h-5 object-cover"
+                      className="w-16 h-16 object-cover rounded-md"
                     />
-                    Diseño {index + 1}
+                    <span>Diseño {index + 1}</span>
                   </SelectItem>
                 ))}
               </SelectContent>

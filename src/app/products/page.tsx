@@ -1,9 +1,16 @@
+import { Metadata } from "next";
 import { Suspense } from "react";
 
 import ProductCardSkeleton from "@/components/PRoductSkeleton";
 import ProductCard from "@/components/products/ProductCard";
 import { pb } from "@/lib/pocketbase";
 import { ItemProductsList } from "@/types/Products";
+
+//metadata
+export const metadata: Metadata = {
+  title: "Productos - Nay's Dreams",
+  description: "Descubre nuestra colección de ropa y accesorios únicos",
+};
 
 export default async function ProductsPage() {
   const records = await pb

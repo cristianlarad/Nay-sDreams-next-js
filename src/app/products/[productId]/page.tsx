@@ -1,3 +1,5 @@
+import { Metadata } from "next";
+
 import { getCurrentUser } from "@/app/actions/auth";
 import { AuthDialog } from "@/components/auth.ts/authDialog";
 import Hero03 from "@/components/hero-03/hero-03";
@@ -13,6 +15,11 @@ import {
 import { pb } from "@/lib/pocketbase";
 import { ItemProductsList } from "@/types/Products";
 
+//metadata
+export const metadata: Metadata = {
+  title: "Producto - Nay's Dreams",
+  description: "Descubre nuestros productos únicos y personalizados",
+};
 type Props = {
   params: Promise<{ productId: string }>;
 };
@@ -23,6 +30,8 @@ export default async function Page({ params }: Props) {
   const record = await pb
     .collection<ItemProductsList>("products")
     .getOne(productId);
+
+  pb.autoCancellation(false);
   return (
     <>
       <h1 className="mt-6 text-4xl sm:text-5xl md:text-6xl font-bold !leading-[1.2] tracking-tight">
@@ -39,6 +48,7 @@ export default async function Page({ params }: Props) {
                 {record.images.map((image, index) => (
                   <CarouselItem key={index} className="lg:basis-1/2">
                     <div className="relative group">
+                      {/* eslint-disable-next-line @next/next/no-img-element */}
                       <img
                         src={`https://nays-dream.pockethost.io/api/files/${record.collectionId}/${record.id}/${image}`}
                         alt={record.title}
@@ -55,8 +65,8 @@ export default async function Page({ params }: Props) {
                   </CarouselItem>
                 ))}
               </CarouselContent>
-              <CarouselPrevious className="absolute left-4 top-1/2 -translate-y-1/2 z-10 bg-pink-500/20 rounded-full hover:bg-pink-500/30 transition-colors p-2" />
-              <CarouselNext className="absolute right-4 top-1/2 -translate-y-1/2 z-10 bg-pink-500/20 rounded-full hover:bg-pink-500/30 transition-colors p-2" />
+              <CarouselPrevious className="absolute left-4 top-1/2 -translate-y-1/2 z-10 bg-pink-500/55 rounded-full hover:bg-pink-500/30 transition-colors p-2" />
+              <CarouselNext className="absolute right-4 top-1/2 -translate-y-1/2 z-10 bg-pink-500/55 rounded-full hover:bg-pink-500/30 transition-colors p-2" />
             </Carousel>
           </Card>
         </div>

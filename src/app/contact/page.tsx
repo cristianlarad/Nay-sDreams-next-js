@@ -1,8 +1,15 @@
 import { RiWhatsappFill } from "@remixicon/react";
 import { Facebook, Instagram, Phone, MailQuestion } from "lucide-react";
+import { Metadata } from "next";
 import Link from "next/link";
 
 import MapaContacto from "@/components/map/mapLeaflet";
+
+//metadata
+export const metadata: Metadata = {
+  title: "Contacto - Nay's Dreams",
+  description: "Contáctanos para cualquier consulta",
+};
 
 export default function Contact() {
   return (

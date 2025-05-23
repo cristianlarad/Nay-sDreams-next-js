@@ -34,7 +34,7 @@ export const NavMenu = (props: NavigationMenuProps) => (
       </NavigationMenuItem>
       <NavigationMenuItem>
         <NavigationMenuLink asChild>
-          <Link href="#" className="text-lg">
+          <Link href="/nosotros" className="text-lg">
             <div className="flex items-center gap-x-2">
               <User2 className="md:hidden text-black" />
               Nosotros

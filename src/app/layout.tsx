@@ -1,4 +1,3 @@
-import { Metadata } from "next";
 import { Comic_Neue } from "next/font/google";
 
 import "./globals.css";
@@ -9,11 +8,6 @@ const fontSans = Comic_Neue({
   subsets: ["latin"],
   weight: ["400", "700"],
 });
-
-export const metadata: Metadata = {
-  title: "Nay's Dreams",
-  description: "Descubre nuestra colección de ropa y accesorios únicos",
-};
 
 export default function RootLayout({
   children,
