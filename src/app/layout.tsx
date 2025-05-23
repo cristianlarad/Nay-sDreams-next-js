@@ -1,6 +1,8 @@
 import { Comic_Neue } from "next/font/google";
 
 import "./globals.css";
+import { CookieConsentBanner } from "@/components/cookie-consent-banner";
+import { Footer } from "@/components/footer/footer";
 import Navbar02Page from "@/components/navbar-02/navbar-02";
 import { ThemeProvider } from "@/components/theme-provider";
 
@@ -29,6 +31,8 @@ export default function RootLayout({
           </header>
 
           <main className="p-6 pt-20">{children}</main>
+          <Footer />
+          <CookieConsentBanner />
         </ThemeProvider>
       </body>
     </html>

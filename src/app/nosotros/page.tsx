@@ -40,7 +40,7 @@ export default function NosotrosPage() {
         </div>
         <div className="relative h-80 rounded-xl overflow-hidden">
           <Image
-            src="/images/nosotros-1.jpg" // Reemplaza con tu imagen
+            src="/ilustracion.webp" // Reemplaza con tu imagen
             alt="Nuestro equipo de trabajo"
             fill
             className="object-cover"
@@ -52,7 +52,7 @@ export default function NosotrosPage() {
         <div className="order-2 md:order-1">
           <div className="relative h-80 rounded-xl overflow-hidden">
             <Image
-              src="/images/nosotros-2.jpg" // Reemplaza con tu imagen
+              src="/disenador.webp" // Reemplaza con tu imagen
               alt="Nuestro proceso de trabajo"
               fill
               className="object-cover"
