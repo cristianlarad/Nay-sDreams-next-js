@@ -1,5 +1,5 @@
 import { RiWhatsappFill } from "@remixicon/react";
-import { Facebook, Instagram, Phone, Mail } from "lucide-react";
+import { Facebook, Instagram, Phone, MailQuestion } from "lucide-react";
 import Link from "next/link";
 
 import MapaContacto from "@/components/map/mapLeaflet";
@@ -45,11 +45,11 @@ export default function Contact() {
               </Link>
               <Link href="mailto:sabrinamador2001@gmail.com?subject=Contacto%20desde%20la%20web&body=Hola%20Nay's%20Dreams%2C%0D%0A%0D%0A">
                 <div className="flex items-start gap-3">
-                  <Mail className="w-6 h-6 text-pink-500" />
+                  <MailQuestion className="w-6 h-6 text-pink-500" />
                   <div>
                     <p className="text-gray-600">Email</p>
                     <p className="text-gray-900 font-medium">
-                      sabrinamador@gmail.com
+                      sabrinamador@gmail
                     </p>
                   </div>
                 </div>

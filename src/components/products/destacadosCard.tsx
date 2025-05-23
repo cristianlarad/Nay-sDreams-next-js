@@ -76,7 +76,7 @@ const DestacadosCard = ({ product }: ProductCardProps) => {
           </div>
         </div>
         <div className="flex items-center justify-between mt-8">
-          <div className="flex-shrink-0">
+          <div className="flex-shrink-0 mt-4">
             <Link
               href={`/products/${product.productId}`}
               className="focus:outline-none text-white bg-pink-700 hover:bg-pink-800 focus:ring-4 focus:ring-pink-300 font-medium rounded-lg text-sm px-5 py-2.5 mb-2 dark:bg-pink-600 dark:hover:bg-pink-700 dark:focus:ring-pink-900"
