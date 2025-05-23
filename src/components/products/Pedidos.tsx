@@ -87,7 +87,7 @@ export default function Pedidos({
 
     const phoneNumber = process.env.NEXT_PUBLIC_PHONE_NUMBER;
 
-    window.location.href = `https://wa.me/${phoneNumber}?text=${encodeURIComponent(
+    window.location.href = `whatsapp://send?phone=${phoneNumber}&text=${encodeURIComponent(
       message
     )}`;
 

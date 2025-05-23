@@ -1,5 +1,6 @@
 import { RiWhatsappFill } from "@remixicon/react";
 import { Facebook, Instagram, Phone, Mail } from "lucide-react";
+import Link from "next/link";
 
 import MapaContacto from "@/components/map/mapLeaflet";
 
@@ -33,22 +34,26 @@ export default function Contact() {
               Información de Contacto
             </h2>
             <div className="space-y-6">
-              <div className="flex items-start gap-3">
-                <Phone className="w-6 h-6 text-pink-500" />
-                <div>
-                  <p className="text-gray-600">Teléfono</p>
-                  <p className="text-gray-900 font-medium">+1 XXX XXX XXXX</p>
+              <Link href="tel:+14027700227">
+                <div className="flex items-start gap-3">
+                  <Phone className="w-6 h-6 text-pink-500" />
+                  <div>
+                    <p className="text-gray-600">Teléfono</p>
+                    <p className="text-gray-900 font-medium">+14027700227</p>
+                  </div>
                 </div>
-              </div>
-              <div className="flex items-start gap-3">
-                <Mail className="w-6 h-6 text-pink-500" />
-                <div>
-                  <p className="text-gray-600">Email</p>
-                  <p className="text-gray-900 font-medium">
-                    contacto@naysdreams.com
-                  </p>
+              </Link>
+              <Link href="mailto:sabrinamador2001@gmail.com?subject=Contacto%20desde%20la%20web&body=Hola%20Nay's%20Dreams%2C%0D%0A%0D%0A">
+                <div className="flex items-start gap-3">
+                  <Mail className="w-6 h-6 text-pink-500" />
+                  <div>
+                    <p className="text-gray-600">Email</p>
+                    <p className="text-gray-900 font-medium">
+                      sabrinamador@gmail.com
+                    </p>
+                  </div>
                 </div>
-              </div>
+              </Link>
             </div>
           </div>
 
@@ -58,27 +63,40 @@ export default function Contact() {
               Síguenos
             </h2>
             <div className="space-y-6">
-              <div className="flex items-center gap-4">
-                <Facebook className="w-8 h-8 text-blue-600" />
-                <div>
-                  <p className="text-gray-600">Facebook</p>
-                  <p className="text-gray-900 font-medium">@naysdreams</p>
+              <Link
+                target="_blank"
+                href="https://www.facebook.com/share/1BSMv24LUt/?mibextid=wwXIfr"
+              >
+                <div className="flex items-center gap-4">
+                  <Facebook className="w-8 h-8 text-blue-600" />
+                  <div>
+                    <p className="text-gray-600">Facebook</p>
+                    <p className="text-gray-900 font-medium">@naysdreams</p>
+                  </div>
                 </div>
-              </div>
-              <div className="flex items-center gap-4">
-                <Instagram className="w-8 h-8 text-pink-500" />
-                <div>
-                  <p className="text-gray-600">Instagram</p>
-                  <p className="text-gray-900 font-medium">@naysdreams</p>
+              </Link>
+              <Link
+                target="_blank"
+                href="https://www.instagram.com/sabryamador2?igsh=bmtjY3Q3dTlpZzJ5&utm_source=qr"
+              >
+                <div className="flex items-center gap-4">
+                  <Instagram className="w-8 h-8 text-pink-500" />
+                  <div>
+                    <p className="text-gray-600">Instagram</p>
+                    <p className="text-gray-900 font-medium">@naysdreams</p>
+                  </div>
                 </div>
-              </div>
-              <div className="flex items-center gap-4">
-                <RiWhatsappFill className="w-8 h-8 text-green-500" />
-                <div>
-                  <p className="text-gray-600">WhatsApp</p>
-                  <p className="text-gray-900 font-medium">+1 XXX XXX XXXX</p>
+              </Link>
+
+              <Link href="whatsapp://send?phone=+14027700227">
+                <div className="flex items-center gap-4">
+                  <RiWhatsappFill className="w-8 h-8 text-green-500" />
+                  <div>
+                    <p className="text-gray-600">WhatsApp</p>
+                    <p className="text-gray-900 font-medium">+14027700227</p>
+                  </div>
                 </div>
-              </div>
+              </Link>
             </div>
           </div>
         </div>
