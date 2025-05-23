@@ -1,6 +1,7 @@
 "use client";
 
 import { useState } from "react";
+import { v4 as uuidv4 } from "uuid";
 
 import { Button } from "@/components/ui/button";
 import {
@@ -62,7 +63,7 @@ export default function Pedidos({
     setQuantity(newQuantity);
     setTotal(price * newQuantity);
   };
-
+  const pedidoId = uuidv4();
   const handleImageSelect = (value: string) => {
     setSelectedImage(value);
   };
@@ -78,6 +79,7 @@ export default function Pedidos({
       alert("Por favor selecciona una imagen");
       return;
     }
+    const confirmacionUrl = `${window.location.origin}/comfirm/${pedidoId}`;
 
     const imageUrl = `https://nays-dream.pockethost.io/api/files/${collectionId}/${id}/${selectedImage}`;
     const message =
@@ -88,10 +90,14 @@ export default function Pedidos({
       `*Cantidad:* ${quantity}\n` +
       `*Total:* $${total.toFixed(2)}\n\n` +
       `Imagen de referencia: ${imageUrl}\n\n` +
-      `Adicional:* ${aditional}`;
+      `Adicional:* ${aditional}` +
+      `\n\n` +
+      `*PARA EL ADMINISTRADOR*\n` +
+      `ID de pedido: ${pedidoId}\n` +
+      `Confirmar pedido: ${confirmacionUrl}\n` +
+      `---`;
 
     const phoneNumber = process.env.NEXT_PUBLIC_PHONE_NUMBER;
-
     window.location.href = `whatsapp://send?phone=${phoneNumber}&text=${encodeURIComponent(
       message
     )}`;
@@ -109,6 +115,7 @@ export default function Pedidos({
           aditional,
           productTitle: title,
           productId: id,
+          pedidoId,
           user: {
             name: username,
             email: userEmail,

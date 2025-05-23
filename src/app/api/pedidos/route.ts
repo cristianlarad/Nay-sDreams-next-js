@@ -12,6 +12,7 @@ export async function POST(request: Request) {
       productTitle,
       user,
       aditional,
+      pedidoId,
     } = await request.json();
     const pb = await getPocketBase(request.headers.get("cookie"));
     const response = await pb.collection("pedido").create({
@@ -22,6 +23,8 @@ export async function POST(request: Request) {
       productTitle,
       user,
       aditional,
+      pedidoId,
+      status: "1",
     });
     return NextResponse.json({
       success: true,

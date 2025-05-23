@@ -5,6 +5,7 @@ import { CookieConsentBanner } from "@/components/cookie-consent-banner";
 import { Footer } from "@/components/footer/footer";
 import Navbar02Page from "@/components/navbar-02/navbar-02";
 import { ThemeProvider } from "@/components/theme-provider";
+import { Toaster } from "@/components/ui/sonner";
 
 const fontSans = Comic_Neue({
   subsets: ["latin"],
@@ -30,7 +31,10 @@ export default function RootLayout({
             <div className="flex items-center gap-3"></div>
           </header>
 
-          <main className="p-6 pt-20">{children}</main>
+          <main className="p-6 pt-20">
+            {children}
+            <Toaster />
+          </main>
           <Footer />
           <CookieConsentBanner />
         </ThemeProvider>
