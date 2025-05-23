@@ -3,7 +3,12 @@
 import { useState } from "react";
 
 import { Button } from "@/components/ui/button";
-import { Card, CardContent, CardFooter } from "@/components/ui/card";
+import {
+  Card,
+  CardContent,
+  CardDescription,
+  CardFooter,
+} from "@/components/ui/card";
 import {
   Select,
   SelectContent,
@@ -139,6 +144,7 @@ export default function Pedidos({
               <SelectContent>
                 {imagesUrl.map((image, index) => (
                   <SelectItem key={index} value={image}>
+                    {/* eslint-disable-next-line @next/next/no-img-element */}
                     <img
                       src={`https://nays-dream.pockethost.io/api/files/${collectionId}/${id}/${image}`}
                       alt={title}
@@ -181,7 +187,16 @@ export default function Pedidos({
         </CardContent>
 
         <InfoPedidos />
-        <CardFooter>
+        <CardFooter className="grid">
+          <CardDescription>
+            <div
+              className="p-4 mb-4 text-sm text-red-800 rounded-lg bg-red-50 dark:bg-gray-800 dark:text-red-400"
+              role="alert"
+            >
+              <span className="font-medium">Alerta:</span> El pedido se
+              realizara directamente a whatsapp
+            </div>
+          </CardDescription>
           <Button
             type="button"
             onClick={(e) => {
@@ -201,7 +216,16 @@ export default function Pedidos({
             <AlertDialogTitle>¿Confirmar pedido?</AlertDialogTitle>
             <AlertDialogDescription>
               Una vez que confirmes, se le atenderá en breve.
-              <InfoPedidos />
+            </AlertDialogDescription>
+            <AlertDialogDescription>
+              <div
+                className="p-4 mb-4 text-sm text-red-800 rounded-lg bg-red-50 dark:bg-gray-800 dark:text-red-400"
+                role="alert"
+              >
+                <span className="font-medium">Atención:</span> Sera dirigido a
+                WhatsApp. Una vez en la aplicación podrá enviar sus fotos a
+                sublimar
+              </div>
             </AlertDialogDescription>
           </AlertDialogHeader>
           <AlertDialogFooter>

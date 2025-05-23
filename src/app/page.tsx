@@ -1,9 +1,11 @@
 import Link from "next/link";
+import { Suspense } from "react";
 
 import { Button } from "@/components/button";
 import MapaContacto from "@/components/map/mapLeaflet";
 import InfoPedidos from "@/components/products/InfoPedidos";
 import Destacadoslist from "@/components/products/destacadoslist";
+import { Skeleton } from "@/components/skeleton";
 import TitleNays from "@/components/titleNays";
 
 export default async function Home() {
@@ -122,7 +124,9 @@ export default async function Home() {
       </section>
 
       {/* Sección Destacados */}
-      <Destacadoslist />
+      <Suspense fallback={<Skeleton className="h-96" />}>
+        <Destacadoslist />
+      </Suspense>
       <InfoPedidos />
 
       {/* Sección Contacto */}

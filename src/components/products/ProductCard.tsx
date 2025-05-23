@@ -9,21 +9,27 @@ interface ProductCardProps {
 
 const ProductCard = ({ product }: ProductCardProps) => {
   return (
-    <div className="w-full shadow-sm  rounded-lg  ">
-      <div className="h-[300px] w-full rounded-md">
+    <div className="w-full bg-white shadow-lg rounded-xl overflow-hidden hover:shadow-xl transition-all duration-300 transform hover:-translate-y-1 border border-gray-100">
+      <div className="relative group">
+        {/* eslint-disable-next-line @next/next/no-img-element */}
         <img
           src={`https://nays-dream.pockethost.io/api/files/${product.collectionId}/${product.id}/${product.images[0]}`}
           alt={product.title}
-          className="h-[300px] w-full object-cover rounded-t-md pt-2"
+          className="h-[280px] w-full object-cover transition-transform duration-300 group-hover:scale-105"
         />
+        <div className="absolute inset-0 bg-gradient-to-t from-black/20 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
       </div>
-      <div className="px-5 pb-5 ">
-        <div className="h-[100px] flex flex-col justify-between">
-          <h5 className="text-xl font-semibold mt-4  ">{product.title}</h5>
-          <div className="flex items-center mt-2.5">
-            <div className="flex items-center space-x-1 rtl:space-x-reverse">
+
+      <div className="p-6">
+        <div className="flex flex-col justify-between min-h-[120px]">
+          <h5 className="text-xl font-semibold text-gray-800 mb-3 line-clamp-2 hover:text-pink-700 transition-colors duration-200">
+            {product.title}
+          </h5>
+
+          <div className="flex items-center mb-4">
+            <div className="flex items-center space-x-1">
               <svg
-                className="w-4 h-4 text-yellow-300"
+                className="w-5 h-5 text-yellow-400 drop-shadow-sm"
                 aria-hidden="true"
                 xmlns="http://www.w3.org/2000/svg"
                 fill="currentColor"
@@ -32,7 +38,7 @@ const ProductCard = ({ product }: ProductCardProps) => {
                 <path d="M20.924 7.625a1.523 1.523 0 0 0-1.238-1.044l-5.051-.734-2.259-4.577a1.534 1.534 0 0 0-2.752 0L7.365 5.847l-5.051.734A1.535 1.535 0 0 0 1.463 9.2l3.656 3.563-.863 5.031a1.532 1.532 0 0 0 2.226 1.616L11 17.033l4.518 2.375a1.534 1.534 0 0 0 2.226-1.617l-.863-5.03L20.537 9.2a1.523 1.523 0 0 0 .387-1.575Z" />
               </svg>
               <svg
-                className="w-4 h-4 text-yellow-300"
+                className="w-5 h-5 text-yellow-400 drop-shadow-sm"
                 aria-hidden="true"
                 xmlns="http://www.w3.org/2000/svg"
                 fill="currentColor"
@@ -41,7 +47,7 @@ const ProductCard = ({ product }: ProductCardProps) => {
                 <path d="M20.924 7.625a1.523 1.523 0 0 0-1.238-1.044l-5.051-.734-2.259-4.577a1.534 1.534 0 0 0-2.752 0L7.365 5.847l-5.051.734A1.535 1.535 0 0 0 1.463 9.2l3.656 3.563-.863 5.031a1.532 1.532 0 0 0 2.226 1.616L11 17.033l4.518 2.375a1.534 1.534 0 0 0 2.226-1.617l-.863-5.03L20.537 9.2a1.523 1.523 0 0 0 .387-1.575Z" />
               </svg>
               <svg
-                className="w-4 h-4 text-yellow-300"
+                className="w-5 h-5 text-yellow-400 drop-shadow-sm"
                 aria-hidden="true"
                 xmlns="http://www.w3.org/2000/svg"
                 fill="currentColor"
@@ -50,7 +56,7 @@ const ProductCard = ({ product }: ProductCardProps) => {
                 <path d="M20.924 7.625a1.523 1.523 0 0 0-1.238-1.044l-5.051-.734-2.259-4.577a1.534 1.534 0 0 0-2.752 0L7.365 5.847l-5.051.734A1.535 1.535 0 0 0 1.463 9.2l3.656 3.563-.863 5.031a1.532 1.532 0 0 0 2.226 1.616L11 17.033l4.518 2.375a1.534 1.534 0 0 0 2.226-1.617l-.863-5.03L20.537 9.2a1.523 1.523 0 0 0 .387-1.575Z" />
               </svg>
               <svg
-                className="w-4 h-4 text-yellow-300"
+                className="w-5 h-5 text-yellow-400 drop-shadow-sm"
                 aria-hidden="true"
                 xmlns="http://www.w3.org/2000/svg"
                 fill="currentColor"
@@ -59,7 +65,7 @@ const ProductCard = ({ product }: ProductCardProps) => {
                 <path d="M20.924 7.625a1.523 1.523 0 0 0-1.238-1.044l-5.051-.734-2.259-4.577a1.534 1.534 0 0 0-2.752 0L7.365 5.847l-5.051.734A1.535 1.535 0 0 0 1.463 9.2l3.656 3.563-.863 5.031a1.532 1.532 0 0 0 2.226 1.616L11 17.033l4.518 2.375a1.534 1.534 0 0 0 2.226-1.617l-.863-5.03L20.537 9.2a1.523 1.523 0 0 0 .387-1.575Z" />
               </svg>
               <svg
-                className="w-4 h-4 text-gray-200 dark:text-gray-600"
+                className="w-5 h-5 text-gray-300"
                 aria-hidden="true"
                 xmlns="http://www.w3.org/2000/svg"
                 fill="currentColor"
@@ -68,21 +74,22 @@ const ProductCard = ({ product }: ProductCardProps) => {
                 <path d="M20.924 7.625a1.523 1.523 0 0 0-1.238-1.044l-5.051-.734-2.259-4.577a1.534 1.534 0 0 0-2.752 0L7.365 5.847l-5.051.734A1.535 1.535 0 0 0 1.463 9.2l3.656 3.563-.863 5.031a1.532 1.532 0 0 0 2.226 1.616L11 17.033l4.518 2.375a1.534 1.534 0 0 0 2.226-1.617l-.863-5.03L20.537 9.2a1.523 1.523 0 0 0 .387-1.575Z" />
               </svg>
             </div>
-            <span className="bg-blue-100 text-blue-800 text-xs font-semibold px-2.5 py-0.5 rounded-sm dark:bg-blue-200 dark:text-blue-800 ms-3">
+            <span className="bg-blue-100 text-blue-800 text-sm font-semibold px-3 py-1 rounded-full ml-3 shadow-sm">
               5.0
             </span>
           </div>
         </div>
-        <div className="flex items-center justify-between mt-8">
-          <div className="flex items-center gap-2">
-            <span className="bg-pink-500/20 text-pink-500 text-xs font-medium px-3 py-2 rounded-lg">
+
+        <div className="flex items-center justify-between pt-4 border-t border-gray-100">
+          <div className="flex items-center">
+            <span className="bg-pink-100 text-pink-600 text-sm font-semibold px-2 py-2 rounded-xl shadow-sm border border-pink-200">
               Precio: ${product.price}
             </span>
           </div>
           <div className="flex-shrink-0">
             <Link
               href={`/products/${product.id}`}
-              className="focus:outline-none text-white bg-pink-700 hover:bg-pink-800 focus:ring-4 focus:ring-pink-300 font-medium rounded-lg text-sm px-5 py-2.5 mb-2 dark:bg-pink-600 dark:hover:bg-pink-700 dark:focus:ring-pink-900"
+              className="inline-flex items-center justify-center focus:outline-none text-white bg-pink-700 hover:bg-pink-800 focus:ring-4 focus:ring-pink-300 font-medium rounded-xl text-sm px-6 py-3 transition-all duration-200 transform hover:scale-105 shadow-lg hover:shadow-xl dark:bg-pink-600 dark:hover:bg-pink-700 dark:focus:ring-pink-900"
             >
               Ver Producto
             </Link>
