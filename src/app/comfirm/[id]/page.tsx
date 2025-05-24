@@ -4,17 +4,18 @@ import { redirect } from "next/navigation";
 import { getCurrentUser } from "@/app/actions/auth";
 import ConfirmOrder from "@/components/products/ConfirmOrder";
 
-export default async function ConfirmPage({
-  params,
-}: {
-  params: { id: string };
-}) {
+type Props = {
+  params: Promise<{ id: string }>;
+};
+
+export default async function ConfirmPage({ params }: Props) {
   // Obtener el usuario actual usando la función existente
   const user = await getCurrentUser();
+  const { id } = await params;
 
   // Si no hay usuario autenticado, redirigir al login
   if (!user) {
-    redirect("/login?redirect=/comfirm/" + params.id);
+    redirect("/login?redirect=/comfirm/" + id);
   }
 
   // Verificar si el usuario es administrador
@@ -44,7 +45,7 @@ export default async function ConfirmPage({
 
   return (
     <div className="min-h-screen flex items-center justify-center p-4">
-      <ConfirmOrder pedidoId={params.id} />
+      <ConfirmOrder pedidoId={id} />
     </div>
   );
 }

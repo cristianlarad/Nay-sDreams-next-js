@@ -3,13 +3,12 @@ import { NextResponse } from "next/server";
 
 import { PedidoEstado } from "@/lib/enums/enums";
 import { getPocketBase } from "@/lib/pocketbase";
-
-export async function POST(
-  request: Request,
-  { params }: { params: { id: string } }
-) {
+type Props = {
+  params: Promise<{ id: string }>;
+};
+export async function POST(request: Request, { params }: Props) {
   try {
-    const { id } = params;
+    const { id } = await params;
     const pb = await getPocketBase();
 
     await pb.collection("pedido").update(id, {
