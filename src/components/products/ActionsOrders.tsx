@@ -8,9 +8,10 @@ import { PedidoEstado } from "@/lib/enums/enums";
 
 interface IActionsOrders {
   id: string;
+  status: PedidoEstado;
 }
 
-const ActionsOrders = ({ id }: IActionsOrders) => {
+const ActionsOrders = ({ id, status }: IActionsOrders) => {
   const [isLoading, setIsLoading] = useState(false);
   const router = useRouter();
   const handleConfirm = async () => {
@@ -61,12 +62,16 @@ const ActionsOrders = ({ id }: IActionsOrders) => {
   return (
     <button
       onClick={handleConfirm}
-      disabled={isLoading}
+      disabled={isLoading || status === PedidoEstado.CONFIRMADO}
       className={`px-6 py-2 bg-pink-600 text-white rounded-lg hover:bg-pink-700 transition-colors ${
         isLoading ? "opacity-50 cursor-not-allowed" : ""
       }`}
     >
-      {isLoading ? "Confirmando..." : "Confirmar Pedido"}
+      {isLoading
+        ? "Confirmando..."
+        : status === PedidoEstado.CONFIRMADO
+        ? "Pedido Confirmado"
+        : "Confirmar Pedido"}
     </button>
   );
 };

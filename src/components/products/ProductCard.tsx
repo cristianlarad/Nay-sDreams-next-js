@@ -81,12 +81,10 @@ const ProductCard = ({ product }: ProductCardProps) => {
         </div>
 
         <div className="flex items-center justify-between pt-4 border-t border-gray-100">
-          <div className="flex items-center">
-            <span className="bg-pink-100 text-pink-600 text-sm font-semibold px-2 py-2 rounded-xl shadow-sm border border-pink-200">
-              Precio: ${product.price}
-            </span>
-          </div>
-          <div className="flex-shrink-0">
+          <span className="bg-pink-100 text-pink-600 text-sm font-semibold px-2 py-2 rounded-xl shadow-sm border border-pink-200">
+            Precio: ${product.price}
+          </span>
+          <div>
             <Link
               href={`/products/${product.id}`}
               className="inline-flex items-center justify-center focus:outline-none text-white bg-pink-700 hover:bg-pink-800 focus:ring-4 focus:ring-pink-300 font-medium rounded-xl text-sm px-6 py-3 transition-all duration-200 transform hover:scale-105 shadow-lg hover:shadow-xl dark:bg-pink-600 dark:hover:bg-pink-700 dark:focus:ring-pink-900"
