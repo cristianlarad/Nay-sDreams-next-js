@@ -103,6 +103,12 @@ const PedidosList = ({ pedidos }: IPedidosList) => {
     (
       <div>
         <ListDataTable columns={column} data={pedidos ?? []} />
+        <div>
+          Total :{" "}
+          {formatAmount(
+            pedidos.reduce((total, pedido) => total + pedido.total, 0)
+          )}
+        </div>
       </div>
     )
   );

@@ -1,4 +1,5 @@
 import { NavigationMenuProps } from "@radix-ui/react-navigation-menu";
+import { RiDashboard2Fill } from "@remixicon/react";
 import { Home, PhoneCall, ShoppingCart, User2 } from "lucide-react";
 import Link from "next/link";
 
@@ -61,7 +62,7 @@ export const NavMenu = async (props: NavigationMenuProps) => {
             <NavigationMenuLink asChild>
               <Link href="/admin/pedidos" className="text-lg">
                 <div className="flex items-center gap-x-2">
-                  <PhoneCall className="md:hidden text-black" />
+                  <RiDashboard2Fill className="md:hidden text-black" />
                   Pedidos
                 </div>
               </Link>

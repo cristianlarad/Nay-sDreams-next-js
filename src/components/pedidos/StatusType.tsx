@@ -1,14 +1,22 @@
 import React from "react";
 
-import { obtenerTextoEstado } from "@/lib/enums/enums";
+import { obtenerTextoEstado, PedidoEstado } from "@/lib/enums/enums";
+import { cn } from "@/lib/utils";
 
 interface IStatusType {
-  status: string;
+  status: PedidoEstado;
 }
 
 const StatusType = ({ status }: IStatusType) => {
   return (
-    <div className=" text-pink-600 text-sm font-semibold">
+    <div
+      className={cn(" text-sm font-semibold", {
+        "text-green-600": status === PedidoEstado.CONFIRMADO,
+        "text-yellow-600": status === PedidoEstado.EN_PROCESO,
+        "text-blue-600": status === PedidoEstado.ENTREGADO,
+        "text-red-600": status === PedidoEstado.CANCELADO,
+      })}
+    >
       {obtenerTextoEstado(status)}
     </div>
   );

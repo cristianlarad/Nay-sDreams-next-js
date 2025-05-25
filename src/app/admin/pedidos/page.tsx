@@ -1,3 +1,4 @@
+import { Metadata } from "next";
 import Link from "next/link";
 import React from "react";
 
@@ -5,7 +6,10 @@ import { getCurrentUser } from "@/app/actions/auth";
 import PedidosList from "@/components/pedidos/pedidosList";
 import { getPocketBase } from "@/lib/pocketbase";
 import { IPedidos } from "@/types/pedidos";
-
+export const metadata: Metadata = {
+  title: `Pedidos - Nay's Dreams`,
+  description: "Descubre nuestra colección de ropa y accesorios únicos",
+};
 const PedidosPage = async () => {
   const user = await getCurrentUser();
   const isAdmin = user?.isAdmin === true || user?.isAdmin === "true";

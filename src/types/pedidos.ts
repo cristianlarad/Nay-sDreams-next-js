@@ -1,3 +1,5 @@
+import { PedidoEstado } from "@/lib/enums/enums";
+
 export interface IPedidos {
   id: string;
   pedidoId: string;
@@ -9,7 +11,7 @@ export interface IPedidos {
   productTitle: string;
   quantity: number;
   total: number;
-  status: string;
+  status: PedidoEstado;
   created: string;
   aditional: string;
   imageUrl: string;

@@ -1,8 +1,14 @@
+import { Metadata } from "next";
 import Link from "next/link";
 import { redirect } from "next/navigation";
 
 import { getCurrentUser } from "@/app/actions/auth";
 import ConfirmOrder from "@/components/products/ConfirmOrder";
+
+export const metadata: Metadata = {
+  title: "Confirmar - Nay's Dreams",
+  description: "Confirmar tu pedido en Nay's Dreams",
+};
 
 type Props = {
   params: Promise<{ id: string }>;

@@ -7,6 +7,7 @@ import { obtenerTextoEstado } from "@/lib/enums/enums";
 import { getPocketBase } from "@/lib/pocketbase";
 
 import ActionsOrders from "./ActionsOrders";
+import ChangeStatusPedidos from "./ChangeStatusPedidos";
 interface IConfirmOrder {
   pedidoId: string;
 }
@@ -125,7 +126,8 @@ const ConfirmOrder = async ({ pedidoId }: IConfirmOrder) => {
 
           {/* Acciones */}
           <div className="bg-gray-50 px-6 py-4 flex justify-end space-x-4 border-t">
-            <ActionsOrders id={pedido.id} />
+            <ChangeStatusPedidos id={pedido.id} initialStatus={pedido.status} />
+            <ActionsOrders id={pedido.id} status={pedido.status} />
           </div>
         </div>
       </div>
