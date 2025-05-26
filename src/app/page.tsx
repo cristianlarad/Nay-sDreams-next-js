@@ -1,3 +1,4 @@
+import { Metadata } from "next";
 import Link from "next/link";
 import { Suspense } from "react";
 
@@ -7,7 +8,10 @@ import InfoPedidos from "@/components/products/InfoPedidos";
 import Destacadoslist from "@/components/products/destacadoslist";
 import { Skeleton } from "@/components/skeleton";
 import TitleNays from "@/components/titleNays";
-
+export const metadata: Metadata = {
+  title: " Nay's Dreams",
+  description: "Descubre nuestra colección de ropa y accesorios únicos",
+};
 export default async function Home() {
   return (
     <div className="min-h-screen bg-white">
