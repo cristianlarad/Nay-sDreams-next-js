@@ -2,9 +2,6 @@
 
 import L from "leaflet";
 import "leaflet/dist/leaflet.css";
-import iconRetinaUrl from "leaflet/dist/images/marker-icon-2x.png";
-import iconUrl from "leaflet/dist/images/marker-icon.png";
-import shadowUrl from "leaflet/dist/images/marker-shadow.png";
 import { useEffect, useRef } from "react";
 
 interface MapaContactoProps {
@@ -13,6 +10,16 @@ interface MapaContactoProps {
   zoom?: number;
   height?: string;
 }
+const icon = L.icon({
+  iconUrl: "https://unpkg.com/leaflet@1.7.1/dist/images/marker-icon.png",
+  iconRetinaUrl:
+    "https://unpkg.com/leaflet@1.7.1/dist/images/marker-icon-2x.png",
+  shadowUrl: "https://unpkg.com/leaflet@1.7.1/dist/images/marker-shadow.png",
+  iconSize: [25, 41],
+  iconAnchor: [12, 41],
+  popupAnchor: [1, -34],
+  shadowSize: [41, 41],
+});
 
 export default function MapaContacto({
   lat,
@@ -27,11 +34,7 @@ export default function MapaContacto({
       // Configurar el icono por defecto de Leaflet
       // eslint-disable-next-line
       delete (L.Icon.Default.prototype as any)._getIconUrl;
-      L.Icon.Default.mergeOptions({
-        iconRetinaUrl: iconRetinaUrl,
-        iconUrl: iconUrl,
-        shadowUrl: shadowUrl,
-      });
+      L.Icon.Default.mergeOptions({});
 
       // Crear el mapa
       const map = L.map(mapContainer.current).setView([lat, lng], zoom);
@@ -43,7 +46,10 @@ export default function MapaContacto({
       }).addTo(map);
 
       // Agregar el marcador
-      L.marker([lat, lng]).addTo(map).bindPopup("Nay's Dreams").openPopup();
+      L.marker([lat, lng], { icon })
+        .addTo(map)
+        .bindPopup("Nay's Dreams")
+        .openPopup();
 
       // Limpiar el mapa cuando el componente se desmonte
       return () => {
