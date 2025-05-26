@@ -73,12 +73,14 @@ export function Footer() {
             <ul className="space-y-3">
               <li className="flex items-start">
                 <MapPin className="h-5 w-5 text-pink-400 mr-3 mt-0.5 flex-shrink-0" />
-                <span className="">Dirección de la tienda, Ciudad, País</span>
+                <span className="">
+                  2830 Jameson North apto 27 Lincoln NE zip code: 68516
+                </span>
               </li>
               <li className="flex items-center">
                 <Phone className="h-5 w-5 text-pink-400 mr-3" />
-                <a href="tel:+1234567890" className=" hover:text-pink-400">
-                  +1 (234) 567-890
+                <a href="tel:+14027700227" className=" hover:text-pink-400">
+                  +1 (402) 770-0227
                 </a>
               </li>
               <li className="flex items-center">
@@ -98,20 +100,7 @@ export function Footer() {
             <h3 className="text-lg font-semibold mb-4 text-pink-500">
               Horario de Atención
             </h3>
-            <ul className="space-y-2 text-black">
-              <li className="flex justify-between">
-                <span>Lunes - Viernes:</span>
-                <span>9:00 AM - 6:00 PM</span>
-              </li>
-              <li className="flex justify-between">
-                <span>Sábado:</span>
-                <span>10:00 AM - 4:00 PM</span>
-              </li>
-              <li className="flex justify-between">
-                <span>Domingo:</span>
-                <span>Cerrado</span>
-              </li>
-            </ul>
+            <ul className="space-y-2 text-black">Abierto las 24 horas</ul>
           </div>
         </div>
 

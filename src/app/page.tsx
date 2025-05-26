@@ -12,7 +12,7 @@ export default async function Home() {
   return (
     <div className="min-h-screen bg-white">
       {/* Sección Hero */}
-      <section className="relative py-20">
+      <section className="relative">
         <div className="container mx-auto px-4">
           <div className="max-w-4xl mx-auto text-center">
             <div className="grid items-center justify-center">
@@ -25,14 +25,6 @@ export default async function Home() {
               Descubre nuestra colección única de productos personalizados con
               sublimación
             </p>
-            <h1>Ubicación</h1>
-            <div className="py-4">
-              <MapaContacto
-                lat={40.7604942321777}
-                zoom={13}
-                lng={-96.6814422607422}
-              />
-            </div>
             <div className="grid md:flex  justify-center gap-4">
               <Link href="/products">
                 <Button className="bg-pink-700 hover:bg-pink-800 px-8 py-4 text-lg text-white">
@@ -40,12 +32,22 @@ export default async function Home() {
                 </Button>
               </Link>
             </div>
+            <div className="">
+              <h1 className="text-4xl  mt-4">Ubicación</h1>
+              <div className="py-4">
+                <MapaContacto
+                  lat={40.7604942321777}
+                  zoom={13}
+                  lng={-96.6814422607422}
+                />
+              </div>
+            </div>
           </div>
         </div>
       </section>
 
       {/* Sección Características */}
-      <section className="py-20">
+      <section className="mt-4">
         <div className="container mx-auto px-4">
           <div className="grid md:grid-cols-3 gap-8">
             <div className="text-center p-6 bg-pink-50 rounded-lg shadow-lg">

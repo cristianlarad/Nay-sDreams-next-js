@@ -217,7 +217,7 @@ export default function Pedidos({
               role="alert"
             >
               <span className="font-medium">Alerta:</span> El pedido se
-              realizara directamente a whatsapp
+              realizara directamente a WhatsApp
             </div>
           </CardDescription>
           <Button
