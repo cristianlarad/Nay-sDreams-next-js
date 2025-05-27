@@ -10,7 +10,6 @@ export default async function VideoList() {
   const t = await getTranslations("Video");
 
   const videos = await pb.collection<Video>("videos").getFullList();
-  console.log(videos);
   return (
     <div>
       <h1 className="text-3xl font-bold text-center mb-12 text-pink-700">

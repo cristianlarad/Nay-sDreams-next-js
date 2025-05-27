@@ -17,7 +17,8 @@
     "description": "Discover our unique collection of personalized products with sublimation",
     "seeProducts": "See Products",
     "price": "Price",
-    "singInText": "Please, sign in to make a purchase"
+    "singInText": "Please, sign in to make a purchase",
+    "wrappersStock": "Wrappers available"
   },
   "Auth": {
     "title": "Sign In",

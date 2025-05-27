@@ -18,7 +18,8 @@
     "seeProducts": "Ver Productos",
     "price": "Precio",
     "galery": "Galería de imágenes",
-    "singInText": " Por favor, inicia sesión para hacer un pedido"
+    "singInText": " Por favor, inicia sesión para hacer un pedido",
+    "wrappersStock": "Envolturas de Regalos disponibles"
   },
   "Auth": {
     "title": "Iniciar Sesión",
