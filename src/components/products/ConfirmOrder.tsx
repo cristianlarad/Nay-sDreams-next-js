@@ -1,6 +1,7 @@
 import { format } from "date-fns";
 import { es } from "date-fns/locale";
 import Image from "next/image";
+import Link from "next/link";
 import React from "react";
 
 import { obtenerTextoEstado } from "@/lib/enums/enums";
@@ -24,14 +25,13 @@ const ConfirmOrder = async ({ pedidoId }: IConfirmOrder) => {
     const fechaFormateada = format(fecha, "PPPpp", { locale: es });
 
     return (
-      <div className="max-w-4xl mx-auto p-4">
-        <div className="bg-white rounded-xl shadow-md overflow-hidden">
+      <div className="w-auto mx-auto">
+        <div className="bg-white rounded-xl shadow-md">
           {/* Encabezado */}
           <div className="bg-pink-600 p-6 text-white">
             <div className="flex justify-between items-center">
               <div>
-                <h1 className="text-2xl font-bold">Detalles del Pedido</h1>
-                <p className="text-pink-100">ID: {pedido.pedidoId}</p>
+                <h1 className="text-2xl font-bold">Pedido</h1>
               </div>
               <div className="bg-white text-pink-600 px-4 py-2 rounded-full text-sm font-semibold">
                 {obtenerTextoEstado(pedido.status)}
@@ -46,11 +46,11 @@ const ConfirmOrder = async ({ pedidoId }: IConfirmOrder) => {
                 Información del Pedido
               </h2>
               <div className="space-y-3">
-                <div className="flex justify-between">
+                <div className="grid md:flex justify-between">
                   <span className="text-gray-600">Fecha:</span>
                   <span className="font-medium">{fechaFormateada}</span>
                 </div>
-                <div className="flex justify-between">
+                <div className="grid md:flex justify-between">
                   <span className="text-gray-600">Producto:</span>
                   <span className="font-medium">{pedido.productTitle}</span>
                 </div>
@@ -125,7 +125,7 @@ const ConfirmOrder = async ({ pedidoId }: IConfirmOrder) => {
           </div>
 
           {/* Acciones */}
-          <div className="bg-gray-50 px-6 py-4 flex justify-end space-x-4 border-t">
+          <div className="bg-gray-50 grid py-4 md:flex md:justify-end md:space-x-4 space-y-4 px-4 border-t">
             <ChangeStatusPedidos id={pedido.id} initialStatus={pedido.status} />
             <ActionsOrders id={pedido.id} status={pedido.status} />
           </div>
@@ -159,12 +159,12 @@ const ConfirmOrder = async ({ pedidoId }: IConfirmOrder) => {
           <p className="text-gray-600 mb-6">
             No se pudo encontrar el pedido con ID: {pedidoId}
           </p>
-          <a
+          <Link
             href="/admin/pedidos"
             className="inline-block px-6 py-2 bg-pink-600 text-white rounded-lg hover:bg-pink-700 transition-colors"
           >
             Volver a la lista de pedidos
-          </a>
+          </Link>
         </div>
       </div>
     );

@@ -50,7 +50,7 @@ export default async function ConfirmPage({ params }: Props) {
   }
 
   return (
-    <div className="min-h-screen flex items-center justify-center p-4">
+    <div className="min-h-screen flex items-center justify-center w-full">
       <ConfirmOrder pedidoId={id} />
     </div>
   );
