@@ -31,6 +31,7 @@
     "forgotPassword": "¿Olvidaste tu contraseña?",
     "createAccount": "¿No tienes una cuenta?",
     "signIn": "Iniciar Sesión",
+    "logout": "Cerrar Sesión",
     "signUp": "Registrarse",
     "error": "Error al iniciar sesión",
     "processing": "Procesando..."
@@ -112,7 +113,12 @@
     "confirmText": "Enviar Pedido",
     "confirmText?": "Enviar Pedido?",
     "confirmText2": " Una vez confirmado, será atendido pronto.",
-    "cancel": "Cancelar"
+    "cancel": "Cancelar",
+    "username": "Nombre",
+    "email": "Correo Electrónico",
+    "usernameRequired": "Nombre es requerido",
+    "emailRequired": "Correo Electrónico es requerido",
+    "emailInvalid": "Correo Electrónico es invalido"
   },
   "InfoOrders": {
     "Shipment": "Envío",

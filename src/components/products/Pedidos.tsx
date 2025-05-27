@@ -41,8 +41,6 @@ interface IPedidos {
   titleEn: string;
   id: string;
   collectionId: string;
-  username: string;
-  userEmail: string;
 }
 
 export default function Pedidos({
@@ -51,17 +49,20 @@ export default function Pedidos({
   price,
   title,
   titleEn,
-  username,
-  userEmail,
   id,
 }: IPedidos) {
   const [selectedImage, setSelectedImage] = useState<string>("");
   const [quantity, setQuantity] = useState<number>(1);
   const [aditional, setAditional] = useState<string>("");
   const [total, setTotal] = useState<number>(price);
+  const [username, setUsername] = useState<string>("");
+  const [userEmail, setUserEmail] = useState<string>("");
   const [showConfirmDialog, setShowConfirmDialog] = useState(false);
   const t = useTranslations("Orders");
-
+  const [errors, setErrors] = useState({
+    username: "",
+    email: "",
+  });
   const handleQuantityChange = (value: string) => {
     const newQuantity = parseInt(value);
     setQuantity(newQuantity);
@@ -75,10 +76,26 @@ export default function Pedidos({
   const handleAditionalChange = (value: string) => {
     setAditional(value);
   };
-
+  const validateForm = () => {
+    const newErrors = {
+      username: !username ? t("usernameRequired") : "",
+      email: !userEmail
+        ? t("emailRequired")
+        : !/\S+@\S+\.\S+/.test(userEmail)
+        ? t("emailInvalid")
+        : "",
+    };
+    setErrors(newErrors);
+    return !newErrors.username && !newErrors.email;
+  };
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
+    if (!validateForm()) return;
 
+    if (!selectedImage) {
+      alert(t("hola"));
+      return;
+    }
     if (!selectedImage) {
       alert(t("SelectDesign"));
       return;
@@ -203,6 +220,42 @@ export default function Pedidos({
           </div>
           <div className="space-y-2">
             <label className="text-sm font-medium leading-none">
+              {t("username")}
+            </label>
+            <Input
+              type="text"
+              value={username}
+              onChange={(e) => {
+                setUsername(e.target.value);
+                setErrors((prev) => ({ ...prev, username: "" }));
+              }}
+              className="w-full"
+              required
+            />
+            {errors.username && (
+              <p className="text-sm text-red-500">{errors.username}</p>
+            )}
+          </div>
+          <div className="space-y-2">
+            <label className="text-sm font-medium leading-none">
+              {t("email")}
+            </label>
+            <Input
+              type="email"
+              value={userEmail}
+              onChange={(e) => {
+                setUserEmail(e.target.value);
+                setErrors((prev) => ({ ...prev, email: "" }));
+              }}
+              className="w-full"
+              required
+            />
+            {errors.email && (
+              <p className="text-sm text-red-500">{errors.email}</p>
+            )}
+          </div>
+          <div className="space-y-2">
+            <label className="text-sm font-medium leading-none">
               {t("aditional")}
             </label>
             <Textarea
@@ -235,10 +288,11 @@ export default function Pedidos({
             type="button"
             onClick={(e) => {
               e.preventDefault();
-              setShowConfirmDialog(true);
+              if (validateForm()) {
+                setShowConfirmDialog(true);
+              }
             }}
             className="w-full bg-pink-500 hover:bg-pink-600 text-lg"
-            disabled={!selectedImage}
           >
             {t("confirmText")}
           </Button>

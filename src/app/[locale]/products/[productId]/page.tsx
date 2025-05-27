@@ -1,8 +1,6 @@
 import { Metadata } from "next";
 import { getLocale, getTranslations } from "next-intl/server";
 
-import { getCurrentUser } from "@/app/[locale]/actions/auth";
-import { AuthDialog } from "@/components/auth.ts/authDialog";
 import Hero03 from "@/components/hero-03/hero-03";
 import Pedidos from "@/components/products/Pedidos";
 import { Card } from "@/components/ui/card";
@@ -37,7 +35,6 @@ export default async function Page({ params }: Props) {
       : product.description;
   };
   const { productId } = await params;
-  const user = await getCurrentUser();
   const record = await pb
     .collection<ItemProductsList>("products")
     .getOne(productId);
@@ -87,23 +84,15 @@ export default async function Page({ params }: Props) {
           price={record.price}
         />
       </div>
-      {user ? (
-        <Pedidos
-          titleEn={record.titleEn}
-          userEmail={user.email}
-          username={user.name}
-          imagesUrl={record.images ?? []}
-          price={record.price ?? 0}
-          title={record.title}
-          id={record.id ?? ""}
-          collectionId={record.collectionId ?? ""}
-        />
-      ) : (
-        <div className="flex flex-col items-center justify-center mt-4">
-          <h1 className="text-2xl font-bold mb-4">{t("singInText")}</h1>
-          <AuthDialog />
-        </div>
-      )}
+
+      <Pedidos
+        titleEn={record.titleEn}
+        imagesUrl={record.images ?? []}
+        price={record.price ?? 0}
+        title={record.title}
+        id={record.id ?? ""}
+        collectionId={record.collectionId ?? ""}
+      />
     </>
   );
 }
