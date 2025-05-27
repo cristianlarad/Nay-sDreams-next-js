@@ -49,14 +49,14 @@ export function LocaleSwitcher() {
           disabled={currentLocale === "es"}
         >
           <span className="mr-2">🇪🇸</span>
-          <span>Español</span>
+          <span>Esp</span>
         </DropdownMenuItem>
         <DropdownMenuItem
           onClick={() => onSelectChange("en")}
           disabled={currentLocale === "en"}
         >
           <span className="mr-2">En</span>
-          <span>English</span>
+          <span>Eng</span>
         </DropdownMenuItem>
       </DropdownMenuContent>
     </DropdownMenu>

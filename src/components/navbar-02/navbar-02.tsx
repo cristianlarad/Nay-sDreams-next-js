@@ -40,6 +40,8 @@ const Navbar02Page = async () => {
 
           {/* Mobile Menu */}
           <div className="md:hidden flex items-center space-x-2">
+            <LocaleSwitcher />
+
             {user ? (
               <UserDropdown email={user.email} name={user.name} />
             ) : (
