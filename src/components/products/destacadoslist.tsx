@@ -2,7 +2,7 @@
 
 import { useEffect, useState } from "react";
 
-import Loading from "@/app/products/loading";
+import Loading from "@/app/[locale]/products/loading";
 import { IDestacados } from "@/types/Products";
 
 import DestacadosCard from "./destacadosCard";

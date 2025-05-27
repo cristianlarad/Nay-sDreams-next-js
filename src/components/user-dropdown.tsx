@@ -1,4 +1,4 @@
-import { logout } from "@/app/actions/auth";
+import { logout } from "@/app/[locale]/actions/auth";
 import { Avatar, AvatarFallback, AvatarImage } from "@/components/avatar";
 import { Button } from "@/components/button";
 import {

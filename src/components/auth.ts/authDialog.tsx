@@ -4,7 +4,7 @@ import { useState } from "react";
 import { useActionState } from "react";
 import { useFormStatus } from "react-dom";
 
-import { AuthResponse, login, register } from "@/app/actions/auth";
+import { AuthResponse, login, register } from "@/app/[locale]/actions/auth";
 import { Button } from "@/components/ui/button";
 import {
   Dialog,

@@ -3,7 +3,7 @@ import { RiDashboard2Fill } from "@remixicon/react";
 import { Home, PhoneCall, ShoppingCart, User2 } from "lucide-react";
 import Link from "next/link";
 
-import { getCurrentUser } from "@/app/actions/auth";
+import { getCurrentUser } from "@/app/[locale]/actions/auth";
 import {
   NavigationMenu,
   NavigationMenuItem,

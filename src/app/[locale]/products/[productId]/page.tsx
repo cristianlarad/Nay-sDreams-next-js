@@ -1,6 +1,6 @@
 import { Metadata } from "next";
 
-import { getCurrentUser } from "@/app/actions/auth";
+import { getCurrentUser } from "@/app/[locale]/actions/auth";
 import { AuthDialog } from "@/components/auth.ts/authDialog";
 import Hero03 from "@/components/hero-03/hero-03";
 import Pedidos from "@/components/products/Pedidos";

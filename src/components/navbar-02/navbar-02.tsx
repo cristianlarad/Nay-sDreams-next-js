@@ -1,6 +1,6 @@
 import Image from "next/image";
 
-import { getCurrentUser } from "@/app/actions/auth";
+import { getCurrentUser } from "@/app/[locale]/actions/auth";
 
 import { AuthDialog } from "../auth.ts/authDialog";
 import UserDropdown from "../user-dropdown";

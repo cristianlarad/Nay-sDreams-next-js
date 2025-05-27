@@ -1,17 +1,31 @@
 import { Metadata } from "next";
 import Link from "next/link";
-import React from "react";
+import { redirect } from "next/navigation";
 
-import { getCurrentUser } from "@/app/actions/auth";
-import PedidosList from "@/components/pedidos/pedidosList";
-import { getPocketBase } from "@/lib/pocketbase";
-import { IPedidos } from "@/types/pedidos";
+import { getCurrentUser } from "@/app/[locale]/actions/auth";
+import ConfirmOrder from "@/components/products/ConfirmOrder";
+
 export const metadata: Metadata = {
-  title: `Pedidos - Nay's Dreams`,
-  description: "Descubre nuestra colección de ropa y accesorios únicos",
+  title: "Confirmar - Nay's Dreams",
+  description: "Confirmar tu pedido en Nay's Dreams",
 };
-const PedidosPage = async () => {
+
+type Props = {
+  params: Promise<{ id: string }>;
+};
+
+export default async function ConfirmPage({ params }: Props) {
+  // Obtener el usuario actual usando la función existente
   const user = await getCurrentUser();
+  const { id } = await params;
+
+  // Si no hay usuario autenticado, redirigir al login
+  if (!user) {
+    redirect("/login?redirect=/comfirm/" + id);
+  }
+
+  // Verificar si el usuario es administrador
+  // Nota: Asegúrate de que el campo se llame 'isAdmin' en tu base de datos
   const isAdmin = user?.isAdmin === true || user?.isAdmin === "true";
 
   if (!isAdmin) {
@@ -35,18 +49,9 @@ const PedidosPage = async () => {
     );
   }
 
-  const pb = await getPocketBase();
-
-  const pedidos: IPedidos[] = await pb.collection("pedido").getFullList({
-    sort: "-created",
-    filter: "status > 1",
-  });
-
   return (
-    <div>
-      <PedidosList pedidos={pedidos} />
+    <div className="min-h-screen flex items-center justify-center p-4">
+      <ConfirmOrder pedidoId={id} />
     </div>
   );
-};
-
-export default PedidosPage;
+}
