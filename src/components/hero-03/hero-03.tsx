@@ -20,6 +20,12 @@ const Hero03 = async ({ description, price }: Hero03Props) => {
         </div>
         <p className="mt-6 text-[17px] md:text-lg">{description}</p>
       </div>
+      <div
+        className="p-4 mb-4 text-sm text-red-800 rounded-lg bg-red-50 dark:bg-gray-800 dark:text-red-400"
+        role="alert"
+      >
+        <span className="font-medium">{t("wrappersStock")}</span>
+      </div>
     </div>
   );
 };

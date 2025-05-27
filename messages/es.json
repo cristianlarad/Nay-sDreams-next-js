@@ -18,7 +18,8 @@
     "seeProducts": "Ver Productos",
     "price": "Precio",
     "galery": "Galería de imágenes",
-    "singInText": " Por favor, inicia sesión para hacer un pedido"
+    "singInText": " Por favor, inicia sesión para hacer un pedido",
+    "wrappersStock": "Envolturas de Regalos disponibles"
   },
   "Auth": {
     "title": "Iniciar Sesión",
@@ -75,7 +76,8 @@
     "products": "Productos",
     "about": "Sobre Nosotros",
     "contact": "Contáctanos",
-    "dashboard": "Dashboard"
+    "dashboard": "Dashboard",
+    "wrappers": "Envolturas"
   },
   "Footer": {
     "title": "Footer",
@@ -171,5 +173,9 @@
     "modifyText": "Nos reservamos el derecho de modificar estos términos en cualquier momento. Las modificaciones estarán disponibles en esta misma sección.",
     "contact": "9. Contacto",
     "contactText": "Para consultas sobre estos términos, llame al:"
+  },
+  "Video": {
+    "title": "Videos",
+    "description": "Tenemos envolturas disponibles para tus pedidos contactenos para saber mas detalles"
   }
 }

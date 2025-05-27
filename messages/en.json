@@ -17,7 +17,8 @@
     "description": "Discover our unique collection of personalized products with sublimation",
     "seeProducts": "See Products",
     "price": "Price",
-    "singInText": "Please, sign in to make a purchase"
+    "singInText": "Please, sign in to make a purchase",
+    "wrappersStock": "Wrappers available"
   },
   "Auth": {
     "title": "Sign In",
@@ -73,7 +74,8 @@
     "home": "Home",
     "products": "Products",
     "about": "About",
-    "contact": "Contact"
+    "contact": "Contact",
+    "wrappers": "Wrappers"
   },
   "Footer": {
     "title": "Footer",
@@ -169,5 +171,9 @@
     "modifyText": "We reserve the right to modify these terms at any time. The modifications will be available in this same section.",
     "contact": "9. Contact",
     "contactText": "For inquiries about these terms, call:"
+  },
+  "Video": {
+    "title": "Videos",
+    "description": "We have wrappers available for your orders. Contact us for more detail"
   }
 }
