@@ -38,7 +38,13 @@ const ConfirmOrder = async ({ pedidoId }: IConfirmOrder) => {
               </div>
             </div>
           </div>
-
+          <Image
+            src={pedido.imageUrl}
+            alt={pedido.productTitle}
+            width={500}
+            height={500}
+            className="w-full h-48 object-cover"
+          />
           {/* Información del pedido */}
           <div className="p-6 grid md:grid-cols-2 gap-8">
             <div>

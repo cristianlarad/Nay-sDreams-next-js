@@ -6,6 +6,15 @@ const nextConfig: NextConfig = {
   eslint: {
     ignoreDuringBuilds: true,
   },
+  images: {
+    remotePatterns: [
+      {
+        protocol: "https",
+        hostname: "nays-dream.pockethost.io",
+        pathname: "/api/files/**",
+      },
+    ],
+  },
 };
 
 const withNextIntl = createNextIntlPlugin();
