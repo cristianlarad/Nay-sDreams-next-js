@@ -1,6 +1,6 @@
 import { NavigationMenuProps } from "@radix-ui/react-navigation-menu";
 import { RiDashboard2Fill } from "@remixicon/react";
-import { Home, PhoneCall, ShoppingCart, User2 } from "lucide-react";
+import { Home, PhoneCall, ShoppingCart, User2, Video } from "lucide-react";
 import Link from "next/link";
 import { getTranslations } from "next-intl/server";
 
@@ -55,6 +55,16 @@ export const NavMenu = async (props: NavigationMenuProps) => {
               <div className="flex items-center gap-x-2">
                 <PhoneCall className="md:hidden text-black" />
                 {t("contact")}
+              </div>
+            </Link>
+          </NavigationMenuLink>
+        </NavigationMenuItem>
+        <NavigationMenuItem>
+          <NavigationMenuLink asChild>
+            <Link href="/videos" className="text-lg">
+              <div className="flex items-center gap-x-2">
+                <Video className="md:hidden text-black" />
+                {t("wrappers")}
               </div>
             </Link>
           </NavigationMenuLink>
