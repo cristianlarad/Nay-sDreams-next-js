@@ -1,5 +1,6 @@
 "use client";
 
+import { useTranslations } from "next-intl";
 import { useState } from "react";
 import { useActionState } from "react";
 import { useFormStatus } from "react-dom";
@@ -18,18 +19,20 @@ import { Input } from "../input";
 
 function SubmitButton({ isLogin }: { isLogin: boolean }) {
   const { pending } = useFormStatus();
+  const t = useTranslations("Auth");
   return (
     <Button
       type="submit"
       className="w-full bg-pink-500 hover:bg-pink-600"
       disabled={pending}
     >
-      {pending ? "Procesando..." : isLogin ? "Iniciar Sesión" : "Registrarse"}
+      {pending ? t("processing") : isLogin ? t("login") : t("register")}
     </Button>
   );
 }
 
 export function AuthDialog() {
+  const t = useTranslations("Auth");
   const [isLogin, setIsLogin] = useState(true);
   const [error, setError] = useState<string | null>(null);
 
@@ -63,14 +66,12 @@ export function AuthDialog() {
     <Dialog>
       <DialogTrigger asChild>
         <Button className="bg-pink-500 hover:bg-pink-600 text-white">
-          Iniciar Sesión
+          {t("signIn")}
         </Button>
       </DialogTrigger>
       <DialogContent>
         <DialogHeader>
-          <DialogTitle>
-            {isLogin ? "Iniciar Sesión" : "Registrarse"}
-          </DialogTitle>
+          <DialogTitle>{isLogin ? t("login") : t("register")}</DialogTitle>
         </DialogHeader>
 
         <form
@@ -79,7 +80,9 @@ export function AuthDialog() {
         >
           {!isLogin && (
             <div>
-              <label className="block text-sm font-medium mb-1">Nombre</label>
+              <label className="block text-sm font-medium mb-1">
+                {t("name")}
+              </label>
               <Input
                 name="name"
                 type="text"
@@ -90,7 +93,9 @@ export function AuthDialog() {
           )}
 
           <div>
-            <label className="block text-sm font-medium mb-1">Email</label>
+            <label className="block text-sm font-medium mb-1">
+              {t("email")}
+            </label>
             <Input
               name="email"
               type="email"
@@ -100,7 +105,9 @@ export function AuthDialog() {
           </div>
 
           <div>
-            <label className="block text-sm font-medium mb-1">Contraseña</label>
+            <label className="block text-sm font-medium mb-1">
+              {t("password")}
+            </label>
             <Input
               name="password"
               type="password"
@@ -125,7 +132,7 @@ export function AuthDialog() {
               className="text-pink-500 hover:underline"
               disabled={state?.success}
             >
-              {isLogin ? "Regístrate" : "Inicia sesión"}
+              {isLogin ? t("signUp") : t("signIn")}
             </button>
           </p>
         </form>

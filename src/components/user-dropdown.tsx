@@ -1,3 +1,5 @@
+import { getTranslations } from "next-intl/server";
+
 import { logout } from "@/app/[locale]/actions/auth";
 import { Avatar, AvatarFallback, AvatarImage } from "@/components/avatar";
 import { Button } from "@/components/button";
@@ -8,13 +10,13 @@ import {
   DropdownMenuLabel,
   DropdownMenuTrigger,
 } from "@/components/dropdown-menu";
-
 export interface IUserProps {
   name: string;
   email: string;
 }
 
-export default function UserDropdown({ email, name }: IUserProps) {
+export default async function UserDropdown({ email, name }: IUserProps) {
+  const t = await getTranslations("Auth");
   return (
     <DropdownMenu>
       <DropdownMenuTrigger asChild>
@@ -53,7 +55,7 @@ export default function UserDropdown({ email, name }: IUserProps) {
         <DropdownMenuItem className="">
           <form action={logout}>
             <Button type="submit" variant="ghost" className=" ">
-              <span>Cerrar Sesión</span>
+              <span>{t("logout")}</span>
             </Button>
           </form>
         </DropdownMenuItem>

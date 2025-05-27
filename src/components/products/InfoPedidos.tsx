@@ -1,8 +1,10 @@
 "use client";
 
 import { Truck, Clock, Shield, Package, Heart } from "lucide-react";
+import { useTranslations } from "next-intl";
 
 export default function InfoPedidos() {
+  const t = useTranslations("InfoOrders");
   return (
     <div className="space-y-4 mb-6">
       <div className="rounded-lg p-4">
@@ -10,10 +12,10 @@ export default function InfoPedidos() {
           <div className="flex items-center gap-3 p-3 rounded-lg bg-gradient-to-r from-pink-50 to-white">
             <Truck className="w-6 h-6 text-pink-500" />
             <div>
-              <h4 className="font-medium text-sm text-pink-600">Envío</h4>
-              <p className="text-sm text-muted-foreground">
-                Entrega a toda Lincoln
-              </p>
+              <h4 className="font-medium text-sm text-pink-600">
+                {t("Shipment")}
+              </h4>
+              <p className="text-sm text-muted-foreground">{t("Delivery")}</p>
             </div>
           </div>
 
@@ -21,18 +23,22 @@ export default function InfoPedidos() {
             <Clock className="w-6 h-6 text-pink-500" />
             <div>
               <h4 className="font-medium text-sm text-pink-600">
-                Entrega Rápida
+                {t("QuickDelivery")}
               </h4>
-              <p className="text-sm text-muted-foreground">2-3 días hábiles</p>
+              <p className="text-sm text-muted-foreground">
+                {t("QuickDeliveryText")}
+              </p>
             </div>
           </div>
 
           <div className="flex items-center gap-3 p-3 rounded-lg bg-gradient-to-r from-pink-50 to-white">
             <Shield className="w-6 h-6 text-pink-500" />
             <div>
-              <h4 className="font-medium text-sm text-pink-600">Seguro</h4>
+              <h4 className="font-medium text-sm text-pink-600">
+                {t("Insurance")}
+              </h4>
               <p className="text-sm text-muted-foreground">
-                Seguimiento incluido
+                {t("InsuranceText")}
               </p>
             </div>
           </div>
@@ -40,16 +46,24 @@ export default function InfoPedidos() {
           <div className="flex items-center gap-3 p-3 rounded-lg bg-gradient-to-r from-pink-50 to-white">
             <Package className="w-6 h-6 text-pink-500" />
             <div>
-              <h4 className="font-medium text-sm text-pink-600">Empaquetado</h4>
-              <p className="text-sm text-muted-foreground">Cuidado especial</p>
+              <h4 className="font-medium text-sm text-pink-600">
+                {t("Packing")}
+              </h4>
+              <p className="text-sm text-muted-foreground">
+                {t("PackingText")}
+              </p>
             </div>
           </div>
 
           <div className="flex items-center gap-3 p-3 rounded-lg bg-gradient-to-r from-pink-50 to-white">
             <Heart className="w-6 h-6 text-pink-500" />
             <div>
-              <h4 className="font-medium text-sm text-pink-600">Atención</h4>
-              <p className="text-sm text-muted-foreground">Personalizada</p>
+              <h4 className="font-medium text-sm text-pink-600">
+                {t("Attention")}
+              </h4>
+              <p className="text-sm text-muted-foreground">
+                {t("AttentionText")}
+              </p>
             </div>
           </div>
         </div>

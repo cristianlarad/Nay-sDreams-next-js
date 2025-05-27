@@ -1,7 +1,9 @@
 import { Mail, MapPin, Phone } from "lucide-react";
 import Link from "next/link";
+import { getTranslations } from "next-intl/server";
 
-export function Footer() {
+export async function Footer() {
+  const t = await getTranslations("Footer");
   const currentYear = new Date().getFullYear();
 
   return (
@@ -18,16 +20,13 @@ export function Footer() {
                 className="h-12 w-auto"
               />
             </div>
-            <p className="">
-              Transformando ideas en realidad a través de la sublimación.
-              Productos únicos y personalizados con la mejor calidad.
-            </p>
+            <p className="">{t("description")}</p>
           </div>
 
           {/* Enlaces rápidos */}
           <div>
             <h3 className="text-lg font-semibold mb-4 text-pink-500">
-              Enlaces Rápidos
+              {t("quickLinks")}
             </h3>
             <ul className="space-y-2">
               <li>
@@ -35,7 +34,7 @@ export function Footer() {
                   href="/"
                   className=" hover:text-pink-400 transition-colors"
                 >
-                  Inicio
+                  {t("home")}
                 </Link>
               </li>
               <li>
@@ -43,7 +42,7 @@ export function Footer() {
                   href="/products"
                   className=" hover:text-pink-400 transition-colors"
                 >
-                  Productos
+                  {t("products")}
                 </Link>
               </li>
               <li>
@@ -51,7 +50,7 @@ export function Footer() {
                   href="/nosotros"
                   className=" hover:text-pink-400 transition-colors"
                 >
-                  Nosotros
+                  {t("about")}
                 </Link>
               </li>
               <li>
@@ -59,7 +58,7 @@ export function Footer() {
                   href="/contact"
                   className=" hover:text-pink-400 transition-colors"
                 >
-                  Contacto
+                  {t("contact")}
                 </Link>
               </li>
             </ul>
@@ -68,7 +67,7 @@ export function Footer() {
           {/* Contacto */}
           <div>
             <h3 className="text-lg font-semibold mb-4 text-pink-500">
-              Contáctanos
+              {t("contactUs")}
             </h3>
             <ul className="space-y-3">
               <li className="flex items-start">
@@ -98,27 +97,26 @@ export function Footer() {
           {/* Horario */}
           <div>
             <h3 className="text-lg font-semibold mb-4 text-pink-500">
-              Horario de Atención
+              {t("openingHours")}
             </h3>
-            <ul className="space-y-2 text-black">Abierto las 24 horas</ul>
+            <ul className="space-y-2 text-black">{t("openingHours24")}</ul>
           </div>
         </div>
 
         <div className="border-t border-gray-200 pt-6 mt-8">
           <div className="flex flex-col md:flex-row justify-between items-center">
             <p className=" text-sm mb-4 md:mb-0">
-              &copy; {currentYear} Nay&apos;s Dreams. Todos los derechos
-              reservados.
+              &copy; {currentYear} Nay&apos;s Dreams. {t("copyright")}
             </p>
             <div className="flex space-x-6">
               <Link
                 href="/policy"
                 className="text-black hover:text-pink-400 text-sm"
               >
-                Política de Privacidad
+                {t("policy")}
               </Link>
               <Link href="/conditions" className=" hover:text-pink-400 text-sm">
-                Términos y Condiciones
+                {t("termsAndConditions")}
               </Link>
             </div>
           </div>

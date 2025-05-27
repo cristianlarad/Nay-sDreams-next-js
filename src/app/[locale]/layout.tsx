@@ -28,7 +28,7 @@ export default async function RootLayout({
     notFound();
   }
   return (
-    <html lang="en" suppressHydrationWarning title="Nay's Dreams">
+    <html lang={locale} suppressHydrationWarning title="Nay's Dreams">
       <body className={`${fontSans.className}  antialiased`}>
         <ThemeProvider
           attribute="class"

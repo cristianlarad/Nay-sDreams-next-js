@@ -2,6 +2,7 @@ import { NavigationMenuProps } from "@radix-ui/react-navigation-menu";
 import { RiDashboard2Fill } from "@remixicon/react";
 import { Home, PhoneCall, ShoppingCart, User2 } from "lucide-react";
 import Link from "next/link";
+import { getTranslations } from "next-intl/server";
 
 import { getCurrentUser } from "@/app/[locale]/actions/auth";
 import {
@@ -12,6 +13,7 @@ import {
 } from "@/components/ui/navigation-menu";
 
 export const NavMenu = async (props: NavigationMenuProps) => {
+  const t = await getTranslations("Navbar");
   const user = await getCurrentUser();
   const isAdmin = user?.isAdmin === true || user?.isAdmin === "true";
   return (
@@ -22,7 +24,7 @@ export const NavMenu = async (props: NavigationMenuProps) => {
             <Link href="/" className="text-lg">
               <div className="flex items-center gap-x-2 ">
                 <Home className="md:hidden text-black" />
-                Inicio
+                {t("home")}
               </div>
             </Link>
           </NavigationMenuLink>
@@ -32,7 +34,7 @@ export const NavMenu = async (props: NavigationMenuProps) => {
             <Link href="/products" className="text-lg">
               <div className="flex items-center gap-x-2">
                 <ShoppingCart className="md:hidden text-black" />
-                Productos
+                {t("products")}
               </div>
             </Link>
           </NavigationMenuLink>
@@ -42,7 +44,7 @@ export const NavMenu = async (props: NavigationMenuProps) => {
             <Link href="/nosotros" className="text-lg">
               <div className="flex items-center gap-x-2">
                 <User2 className="md:hidden text-black" />
-                Nosotros
+                {t("about")}
               </div>
             </Link>
           </NavigationMenuLink>
@@ -52,7 +54,7 @@ export const NavMenu = async (props: NavigationMenuProps) => {
             <Link href="/contact" className="text-lg">
               <div className="flex items-center gap-x-2">
                 <PhoneCall className="md:hidden text-black" />
-                Contacto
+                {t("contact")}
               </div>
             </Link>
           </NavigationMenuLink>

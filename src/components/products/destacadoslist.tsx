@@ -1,5 +1,6 @@
 "use client";
 
+import { useTranslations } from "next-intl";
 import { useEffect, useState } from "react";
 
 import Loading from "@/app/[locale]/products/loading";
@@ -15,7 +16,7 @@ const Destacadoslist = () => {
   const [destacados, setDestacados] = useState<IDestacados[]>([]);
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState<string | null>(null);
-
+  const t = useTranslations("HomePage");
   useEffect(() => {
     const fetchData = async () => {
       try {
@@ -51,7 +52,7 @@ const Destacadoslist = () => {
         <section className="py-4">
           <div className="container mx-auto px-4">
             <h2 className="text-3xl font-bold text-pink-700 text-center mb-12">
-              Productos Destacados
+              {t("destacados")}
             </h2>
             <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-6">
               {destacados.map((producto) => (

@@ -1,4 +1,7 @@
+"use client";
+
 import Link from "next/link";
+import { useLocale } from "next-intl";
 import React from "react";
 
 import { IDestacados } from "@/types/Products";
@@ -8,6 +11,14 @@ interface ProductCardProps {
 }
 
 const DestacadosCard = ({ product }: ProductCardProps) => {
+  const locale = useLocale();
+
+  const getLocalizedTitle = (product: IDestacados) => {
+    return locale === "en" && product.productTitleEn
+      ? product.productTitleEn
+      : product.productTitle;
+  };
+
   return (
     <div className="w-full shadow-sm  rounded-lg  ">
       <div className="h-[300px] w-full rounded-md">
@@ -20,7 +31,7 @@ const DestacadosCard = ({ product }: ProductCardProps) => {
       <div className="px-5 pb-5 ">
         <div className="h-[100px] flex flex-col justify-between">
           <h5 className="text-xl font-semibold mt-4  ">
-            {product.productTitle}
+            {getLocalizedTitle(product)}
           </h5>
           <div className="flex items-center mt-2.5">
             <div className="flex items-center space-x-1 rtl:space-x-reverse">
