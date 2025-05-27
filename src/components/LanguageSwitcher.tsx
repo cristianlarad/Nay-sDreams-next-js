@@ -1,6 +1,6 @@
 "use client";
 
-import { Globe } from "lucide-react";
+import Image from "next/image";
 import { usePathname, useRouter } from "next/navigation";
 import { useLocale } from "next-intl";
 import { useTransition } from "react";
@@ -37,9 +37,12 @@ export function LocaleSwitcher() {
           className="w-full justify-start"
           disabled={isPending}
         >
-          <Globe className="mr-2 h-4 w-4 text-white" />
           <span className="text-white">
-            {currentLocale === "es" ? "Español" : "English"}
+            {currentLocale === "es" ? (
+              <Image src="/es.svg" alt="Spanish" width={20} height={20} />
+            ) : (
+              <Image src="/um.svg" alt="English" width={20} height={20} />
+            )}
           </span>
         </Button>
       </DropdownMenuTrigger>
@@ -48,15 +51,19 @@ export function LocaleSwitcher() {
           onClick={() => onSelectChange("es")}
           disabled={currentLocale === "es"}
         >
-          <span className="mr-2">🇪🇸</span>
-          <span>Esp</span>
+          <span className="mr-2">
+            <Image src="/es.svg" alt="Spanish" width={20} height={20} />
+          </span>
+          <span>Español</span>
         </DropdownMenuItem>
         <DropdownMenuItem
           onClick={() => onSelectChange("en")}
           disabled={currentLocale === "en"}
         >
-          <span className="mr-2">En</span>
-          <span>Eng</span>
+          <span className="mr-2">
+            <Image src="/um.svg" alt="English" width={20} height={20} />
+          </span>
+          <span>English</span>
         </DropdownMenuItem>
       </DropdownMenuContent>
     </DropdownMenu>

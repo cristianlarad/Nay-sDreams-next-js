@@ -30,23 +30,22 @@ const Navbar02Page = async () => {
             <NavMenu className="hidden md:block" />
           </div>
           <div className=" hidden md:flex items-center gap-3">
-            <LocaleSwitcher />
             {user ? (
               <UserDropdown email={user.email} name={user.name} />
             ) : (
               <AuthDialog />
             )}
+            <LocaleSwitcher />
           </div>
 
           {/* Mobile Menu */}
           <div className="md:hidden flex items-center space-x-2">
-            <LocaleSwitcher />
-
             {user ? (
               <UserDropdown email={user.email} name={user.name} />
             ) : (
               <AuthDialog />
             )}
+            <LocaleSwitcher />
             <NavigationSheet />
           </div>
         </div>
