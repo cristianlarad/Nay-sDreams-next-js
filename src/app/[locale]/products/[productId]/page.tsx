@@ -94,7 +94,7 @@ export default async function Page({ params }: Props) {
           username={user.name}
           imagesUrl={record.images ?? []}
           price={record.price ?? 0}
-          title={getLocalizedTitle(record) ?? ""}
+          title={record.title}
           id={record.id ?? ""}
           collectionId={record.collectionId ?? ""}
         />
