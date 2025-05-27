@@ -1,5 +1,6 @@
 "use client";
 
+import { useTranslations } from "next-intl";
 import { useState } from "react";
 import { v4 as uuidv4 } from "uuid";
 
@@ -37,6 +38,7 @@ interface IPedidos {
   imagesUrl: string[];
   price: number;
   title: string;
+  titleEn: string;
   id: string;
   collectionId: string;
   username: string;
@@ -48,6 +50,7 @@ export default function Pedidos({
   imagesUrl,
   price,
   title,
+  titleEn,
   username,
   userEmail,
   id,
@@ -57,6 +60,7 @@ export default function Pedidos({
   const [aditional, setAditional] = useState<string>("");
   const [total, setTotal] = useState<number>(price);
   const [showConfirmDialog, setShowConfirmDialog] = useState(false);
+  const t = useTranslations("Orders");
 
   const handleQuantityChange = (value: string) => {
     const newQuantity = parseInt(value);
@@ -76,7 +80,7 @@ export default function Pedidos({
     e.preventDefault();
 
     if (!selectedImage) {
-      alert("Por favor selecciona una imagen");
+      alert(t("SelectDesign"));
       return;
     }
     const confirmacionUrl = `${window.location.origin}/comfirm/${pedidoId}`;
@@ -114,6 +118,7 @@ export default function Pedidos({
           total,
           aditional,
           productTitle: title,
+          productTitleEn: titleEn,
           productId: id,
           pedidoId,
           user: {
@@ -142,7 +147,7 @@ export default function Pedidos({
 
           <div className="space-y-2">
             <label className="text-sm font-medium leading-none">
-              Seleccionar Diseño
+              {t("SelectDesign")}
             </label>
             <Select onValueChange={handleImageSelect} value={selectedImage}>
               <SelectTrigger className="flex items-center gap-2">
@@ -154,7 +159,9 @@ export default function Pedidos({
                       alt={title}
                       className="w-6 h-6 object-cover rounded-sm"
                     />
-                    <span>Diseño {imagesUrl.indexOf(selectedImage) + 1}</span>
+                    <span>
+                      {t("design")} {imagesUrl.indexOf(selectedImage) + 1}
+                    </span>
                   </div>
                 ) : (
                   <SelectValue placeholder="Selecciona un Diseño" />
@@ -173,7 +180,9 @@ export default function Pedidos({
                       alt={title}
                       className="w-16 h-16 object-cover rounded-md"
                     />
-                    <span>Diseño {index + 1}</span>
+                    <span>
+                      {t("design")} {index + 1}
+                    </span>
                   </SelectItem>
                 ))}
               </SelectContent>
@@ -181,7 +190,9 @@ export default function Pedidos({
           </div>
 
           <div className="space-y-2">
-            <label className="text-sm font-medium leading-none">Cantidad</label>
+            <label className="text-sm font-medium leading-none">
+              {t("quantity")}
+            </label>
             <Input
               type="number"
               min="1"
@@ -192,7 +203,7 @@ export default function Pedidos({
           </div>
           <div className="space-y-2">
             <label className="text-sm font-medium leading-none">
-              Adicional
+              {t("aditional")}
             </label>
             <Textarea
               value={aditional}
@@ -216,8 +227,8 @@ export default function Pedidos({
               className="p-4 mb-4 text-sm text-red-800 rounded-lg bg-red-50 dark:bg-gray-800 dark:text-red-400"
               role="alert"
             >
-              <span className="font-medium">Alerta:</span> El pedido se
-              realizara directamente a WhatsApp
+              <span className="font-medium">{t("alert")}:</span>{" "}
+              {t("alertText")}
             </div>
           </CardDescription>
           <Button
@@ -229,35 +240,32 @@ export default function Pedidos({
             className="w-full bg-pink-500 hover:bg-pink-600 text-lg"
             disabled={!selectedImage}
           >
-            Realizar pedido
+            {t("confirmText")}
           </Button>
         </CardFooter>
       </form>
       <AlertDialog open={showConfirmDialog} onOpenChange={setShowConfirmDialog}>
         <AlertDialogContent>
           <AlertDialogHeader>
-            <AlertDialogTitle>¿Confirmar pedido?</AlertDialogTitle>
-            <AlertDialogDescription>
-              Una vez que confirmes, se le atenderá en breve.
-            </AlertDialogDescription>
+            <AlertDialogTitle>{t("confirmText?")}</AlertDialogTitle>
+            <AlertDialogDescription>{t("confirmText2")}</AlertDialogDescription>
             <AlertDialogDescription>
               <div
                 className="p-4 mb-4 text-sm text-red-800 rounded-lg bg-red-50 dark:bg-gray-800 dark:text-red-400"
                 role="alert"
               >
-                <span className="font-medium">Atención:</span> Sera dirigido a
-                WhatsApp. Una vez en la aplicación podrá enviar sus fotos a
-                sublimar
+                <span className="font-medium">{t("alert")}:</span>{" "}
+                {t("alertText2")}
               </div>
             </AlertDialogDescription>
           </AlertDialogHeader>
           <AlertDialogFooter>
-            <AlertDialogCancel>Cancelar</AlertDialogCancel>
+            <AlertDialogCancel>{t("cancel")}</AlertDialogCancel>
             <AlertDialogAction
               className="bg-pink-500 hover:bg-pink-600 text-lg"
               onClick={handleSubmit}
             >
-              Confirmar pedido
+              {t("confirmText")}
             </AlertDialogAction>
           </AlertDialogFooter>
         </AlertDialogContent>

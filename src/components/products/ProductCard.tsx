@@ -1,4 +1,5 @@
 import Link from "next/link";
+import { getLocale, getTranslations } from "next-intl/server";
 import React from "react";
 
 import { ItemProductsList } from "@/types/Products";
@@ -7,7 +8,13 @@ interface ProductCardProps {
   product: ItemProductsList;
 }
 
-const ProductCard = ({ product }: ProductCardProps) => {
+const ProductCard = async ({ product }: ProductCardProps) => {
+  const t = await getTranslations("Products");
+  const locale = await getLocale();
+  const getLocalizedTitle = (product: ItemProductsList) => {
+    return locale === "en" && product.titleEn ? product.titleEn : product.title;
+  };
+
   return (
     <div className="w-full bg-white shadow-lg rounded-xl overflow-hidden hover:shadow-xl transition-all duration-300 transform hover:-translate-y-1 border border-gray-100">
       <div className="relative group">
@@ -23,7 +30,7 @@ const ProductCard = ({ product }: ProductCardProps) => {
       <div className="p-6">
         <div className="flex flex-col justify-between min-h-[120px]">
           <h5 className="text-xl font-semibold text-gray-800 mb-3 line-clamp-2 hover:text-pink-700 transition-colors duration-200">
-            {product.title}
+            {getLocalizedTitle(product)}
           </h5>
 
           <div className="flex items-center mb-4">
@@ -82,14 +89,14 @@ const ProductCard = ({ product }: ProductCardProps) => {
 
         <div className="flex items-center justify-between pt-4 border-t border-gray-100">
           <span className="bg-pink-100 text-pink-600 text-sm font-semibold px-2 py-2 rounded-xl shadow-sm border border-pink-200">
-            Precio: ${product.price}
+            {t("price")}: ${product.price}
           </span>
           <div>
             <Link
               href={`/products/${product.id}`}
               className="inline-flex items-center justify-center focus:outline-none text-white bg-pink-700 hover:bg-pink-800 focus:ring-4 focus:ring-pink-300 font-medium rounded-xl text-sm px-6 py-3 transition-all duration-200 transform hover:scale-105 shadow-lg hover:shadow-xl dark:bg-pink-600 dark:hover:bg-pink-700 dark:focus:ring-pink-900"
             >
-              Ver Producto
+              {t("seeProducts")}
             </Link>
           </div>
         </div>

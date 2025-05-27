@@ -1,5 +1,6 @@
 import { Metadata } from "next";
 import Link from "next/link";
+import { getTranslations } from "next-intl/server";
 import { Suspense } from "react";
 
 import { Button } from "@/components/button";
@@ -13,6 +14,7 @@ export const metadata: Metadata = {
   description: "Descubre nuestra colección de ropa y accesorios únicos",
 };
 export default async function Home() {
+  const t = await getTranslations("HomePage");
   return (
     <div className="min-h-screen bg-white">
       {/* Sección Hero */}
@@ -21,23 +23,20 @@ export default async function Home() {
           <div className="max-w-4xl mx-auto text-center">
             <div className="grid items-center justify-center">
               <h1 className="text-4xl sm:text-5xl md:text-6xl font-bold text-pink-700 mb-6">
-                ¡Bienvenido a
+                {t("welcome")}
               </h1>
               <TitleNays />
             </div>
-            <p className="text-xl text-gray-600 mb-8">
-              Descubre nuestra colección única de productos personalizados con
-              sublimación
-            </p>
+            <p className="text-xl text-gray-600 mb-8">{t("description")}</p>
             <div className="grid md:flex  justify-center gap-4">
               <Link href="/products">
                 <Button className="bg-pink-700 hover:bg-pink-800 px-8 py-4 text-lg text-white">
-                  Explorar Productos
+                  {t("exploreProducts")}
                 </Button>
               </Link>
             </div>
             <div className="">
-              <h1 className="text-4xl  mt-4">Ubicación</h1>
+              <h1 className="text-4xl  mt-4">{t("location")}</h1>
               <div className="py-4">
                 <MapaContacto
                   lat={40.7604942321777}
@@ -71,11 +70,9 @@ export default async function Home() {
                 </svg>
               </div>
               <h3 className="text-xl font-bold text-pink-900 mb-2">
-                Diseño Personalizado
+                {t("customDesign")}
               </h3>
-              <p className="text-gray-600">
-                Crea diseños únicos y personalizados para cada producto
-              </p>
+              <p className="text-gray-600">{t("customDesignDescription")}</p>
             </div>
 
             <div className="text-center p-6 bg-pink-50 rounded-lg shadow-lg">
@@ -95,11 +92,9 @@ export default async function Home() {
                 </svg>
               </div>
               <h3 className="text-xl font-bold text-pink-900 mb-2">
-                Calidad Premium
+                {t("premiumQuality")}
               </h3>
-              <p className="text-gray-600">
-                Materiales de alta calidad y acabados profesionales
-              </p>
+              <p className="text-gray-600">{t("premiumQualityDescription")}</p>
             </div>
 
             <div className="text-center p-6 bg-pink-50 rounded-lg shadow-lg">
@@ -119,11 +114,9 @@ export default async function Home() {
                 </svg>
               </div>
               <h3 className="text-xl font-bold text-pink-900 mb-2">
-                Rápida Entrega
+                {t("quickDelivery")}
               </h3>
-              <p className="text-gray-600">
-                Entrega rápida y segura a toda la región
-              </p>
+              <p className="text-gray-600">{t("quickDeliveryDescription")}</p>
             </div>
           </div>
         </div>

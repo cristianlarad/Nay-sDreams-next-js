@@ -1,7 +1,8 @@
 import Image from "next/image";
 
-import { getCurrentUser } from "@/app/actions/auth";
+import { getCurrentUser } from "@/app/[locale]/actions/auth";
 
+import { LocaleSwitcher } from "../LanguageSwitcher";
 import { AuthDialog } from "../auth.ts/authDialog";
 import UserDropdown from "../user-dropdown";
 
@@ -28,8 +29,8 @@ const Navbar02Page = async () => {
             </div>
             <NavMenu className="hidden md:block" />
           </div>
-
           <div className=" hidden md:flex items-center gap-3">
+            <LocaleSwitcher />
             {user ? (
               <UserDropdown email={user.email} name={user.name} />
             ) : (
