@@ -286,6 +286,7 @@ export default function Pedidos({
           </CardDescription>
           <Button
             type="button"
+            disabled={!selectedImage}
             onClick={(e) => {
               e.preventDefault();
               if (validateForm()) {
