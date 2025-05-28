@@ -4,18 +4,16 @@ import { Home, PhoneCall, ShoppingCart, User2, Video } from "lucide-react";
 import Link from "next/link";
 import { getTranslations } from "next-intl/server";
 
-import { getCurrentUser } from "@/app/[locale]/actions/auth";
 import {
   NavigationMenu,
   NavigationMenuItem,
   NavigationMenuLink,
   NavigationMenuList,
 } from "@/components/ui/navigation-menu";
+import { IpRestricted } from "@/hooks/useIpRestriction";
 
 export const NavMenu = async (props: NavigationMenuProps) => {
   const t = await getTranslations("Navbar");
-  const user = await getCurrentUser();
-  const isAdmin = user?.isAdmin === true || user?.isAdmin === "true";
   return (
     <NavigationMenu {...props}>
       <NavigationMenuList className="gap-4 md:text-white  font-bold data-[orientation=vertical]:flex-col data-[orientation=vertical]:items-start">
@@ -69,7 +67,7 @@ export const NavMenu = async (props: NavigationMenuProps) => {
             </Link>
           </NavigationMenuLink>
         </NavigationMenuItem>
-        {isAdmin && (
+        <IpRestricted>
           <NavigationMenuItem>
             <NavigationMenuLink asChild>
               <Link href="/admin/pedidos" className="text-lg">
@@ -80,7 +78,7 @@ export const NavMenu = async (props: NavigationMenuProps) => {
               </Link>
             </NavigationMenuLink>
           </NavigationMenuItem>
-        )}
+        </IpRestricted>
       </NavigationMenuList>
     </NavigationMenu>
   );
