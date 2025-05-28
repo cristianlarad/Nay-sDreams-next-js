@@ -99,24 +99,21 @@ interface IPedidosList {
 
 const PedidosList = ({ pedidos }: IPedidosList) => {
   return (
-    console.log(pedidos),
-    (
+    <div>
+      <Link href="/addPedido">
+        <Button variant="link">
+          <Plus />
+          Agregar un pedido
+        </Button>
+      </Link>
+      <ListDataTable columns={column} data={pedidos ?? []} />
       <div>
-        <Link href="/addPedido">
-          <Button variant="link">
-            <Plus />
-            Agregar un pedido
-          </Button>
-        </Link>
-        <ListDataTable columns={column} data={pedidos ?? []} />
-        <div>
-          Total :{" "}
-          {formatAmount(
-            pedidos.reduce((total, pedido) => total + pedido.total, 0)
-          )}
-        </div>
+        Total :{" "}
+        {formatAmount(
+          pedidos.reduce((total, pedido) => total + pedido.total, 0)
+        )}
       </div>
-    )
+    </div>
   );
 };
 

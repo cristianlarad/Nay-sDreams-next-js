@@ -62,6 +62,7 @@ export default function Pedidos({
   const [errors, setErrors] = useState({
     username: "",
     email: "",
+    aditional: "",
   });
   const handleQuantityChange = (value: string) => {
     const newQuantity = parseInt(value);
@@ -73,11 +74,9 @@ export default function Pedidos({
     setSelectedImage(value);
   };
 
-  const handleAditionalChange = (value: string) => {
-    setAditional(value);
-  };
   const validateForm = () => {
     const newErrors = {
+      aditional: !aditional ? t("addressRequired") : "",
       username: !username ? t("usernameRequired") : "",
       email: !userEmail
         ? t("emailRequired")
@@ -111,7 +110,7 @@ export default function Pedidos({
       `*Cantidad:* ${quantity}\n` +
       `*Total:* $${total.toFixed(2)}\n\n` +
       `Imagen de referencia: ${imageUrl}\n\n` +
-      `Adicional:* ${aditional}` +
+      `Direccion:* ${aditional}` +
       `\n\n` +
       `*PARA EL ADMINISTRADOR*\n` +
       `ID de pedido: ${pedidoId}\n` +
@@ -256,13 +255,19 @@ export default function Pedidos({
           </div>
           <div className="space-y-2">
             <label className="text-sm font-medium leading-none">
-              {t("aditional")}
+              {t("address")}
             </label>
             <Textarea
               value={aditional}
-              onChange={(e) => handleAditionalChange(e.target.value)}
+              onChange={(e) => {
+                setAditional(e.target.value);
+                setErrors((prev) => ({ ...prev, aditional: "" }));
+              }}
               className="w-full"
             />
+            {errors.aditional && (
+              <p className="text-sm text-red-500">{errors.aditional}</p>
+            )}
           </div>
 
           <div className="pt-4 border-t">

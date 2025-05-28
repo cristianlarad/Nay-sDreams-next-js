@@ -118,7 +118,9 @@
     "email": "Correo Electrónico",
     "usernameRequired": "Nombre es requerido",
     "emailRequired": "Correo Electrónico es requerido",
-    "emailInvalid": "Correo Electrónico es invalido"
+    "emailInvalid": "Correo Electrónico es invalido",
+    "addressRequired": "Dirección es requerida",
+    "address": "Dirección"
   },
   "InfoOrders": {
     "Shipment": "Envío",

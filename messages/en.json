@@ -115,7 +115,9 @@
     "email": "Email",
     "usernameRequired": "Name is required",
     "emailRequired": "Email is required",
-    "emailInvalid": "Email is invalid"
+    "emailInvalid": "Email is invalid",
+    "addressRequired": "Address is required",
+    "address": "Address"
   },
   "InfoOrders": {
     "Shipment": "Shipment",

@@ -30,6 +30,7 @@ export default function AddPedido({ products }: AddPedidoProps) {
   const [customerUsername, setCustomerUsername] = useState("");
   const [isLoading, setIsLoading] = useState(false);
   const [quantity, setQuantity] = useState(1);
+  const [customerAddress, setCustomerAddress] = useState("");
 
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
@@ -60,7 +61,7 @@ export default function AddPedido({ products }: AddPedidoProps) {
         productId: selectedProductData?.id || "",
         collectionId: selectedProductData?.collectionId || "",
         quantity,
-        aditional: "",
+        aditional: customerAddress,
       };
 
       const response = await fetch("/api/pedidos", {
@@ -114,6 +115,15 @@ export default function AddPedido({ products }: AddPedidoProps) {
                   id="customerUsername"
                   value={customerUsername}
                   onChange={(e) => setCustomerUsername(e.target.value)}
+                  required
+                />
+              </div>
+              <div className="space-y-2">
+                <Label htmlFor="customerAddress">Direccion</Label>
+                <Input
+                  id="customerAddress"
+                  value={customerAddress}
+                  onChange={(e) => setCustomerAddress(e.target.value)}
                   required
                 />
               </div>
