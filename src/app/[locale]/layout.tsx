@@ -29,6 +29,13 @@ export default async function RootLayout({
   }
   return (
     <html lang={locale} suppressHydrationWarning title="Nay's Dreams">
+      <head>
+        <meta
+          name="google-site-verification"
+          content="nOsiE-8NigLj7Pz0HcDSzplrowYI1E69ZfLIauG3ac0"
+        />
+      </head>
+
       <body className={`${fontSans.className}  antialiased`}>
         <ThemeProvider
           attribute="class"
