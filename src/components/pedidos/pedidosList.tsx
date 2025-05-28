@@ -2,7 +2,7 @@
 
 import { RiOrderPlayFill } from "@remixicon/react";
 import { ColumnDef } from "@tanstack/react-table";
-import { ShoppingBagIcon } from "lucide-react";
+import { Plus, ShoppingBagIcon } from "lucide-react";
 import Link from "next/link";
 
 import { formatAmount } from "@/lib/utils";
@@ -102,6 +102,12 @@ const PedidosList = ({ pedidos }: IPedidosList) => {
     console.log(pedidos),
     (
       <div>
+        <Link href="/addPedido">
+          <Button variant="link">
+            <Plus />
+            Agregar un pedido
+          </Button>
+        </Link>
         <ListDataTable columns={column} data={pedidos ?? []} />
         <div>
           Total :{" "}
