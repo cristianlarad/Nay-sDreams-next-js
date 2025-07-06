@@ -4,9 +4,9 @@ import PocketBase from "pocketbase";
 import { useState } from "react";
 
 
-export const pb = new PocketBase(process.env.NEXT_PUBLIC_POCKETBASE_URL);
 
 export default function CreatePage() {
+  const pb = new PocketBase(process.env.NEXT_PUBLIC_POCKETBASE_URL);
   const router = useRouter();
   const [loading, setLoading] = useState(false);
   const [newProduct, setNewProduct] = useState({
