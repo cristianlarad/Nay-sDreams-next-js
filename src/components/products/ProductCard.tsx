@@ -2,13 +2,17 @@ import Link from "next/link";
 import { getLocale, getTranslations } from "next-intl/server";
 import React from "react";
 
+import { getCurrentUser } from "@/app/[locale]/actions/auth";
 import { ItemProductsList } from "@/types/Products";
+
 
 interface ProductCardProps {
   product: ItemProductsList;
 }
 
 const ProductCard = async ({ product }: ProductCardProps) => {
+        const user = await getCurrentUser();
+        const isAdmin = user?.isAdmin === true || user?.isAdmin === "true";
   const t = await getTranslations("Products");
   const locale = await getLocale();
   const getLocalizedTitle = (product: ItemProductsList) => {
@@ -86,12 +90,18 @@ const ProductCard = async ({ product }: ProductCardProps) => {
             </span>
           </div>
         </div>
-
+ {isAdmin &&  <Link
+              href={`/admin/${product.id}`}
+              className="inline-flex items-center justify-center focus:outline-none text-white bg-pink-700 hover:bg-pink-800 focus:ring-4 focus:ring-pink-300 font-medium rounded-xl text-sm px-6 py-3 transition-all duration-200 transform hover:scale-105 shadow-lg hover:shadow-xl dark:bg-pink-600 dark:hover:bg-pink-700 dark:focus:ring-pink-900"
+            >
+              Editar
+            </Link>}
         <div className="flex items-center justify-between pt-4 border-t border-gray-100">
           <span className="bg-pink-100 text-pink-600 text-sm font-semibold px-2 py-2 rounded-xl shadow-sm border border-pink-200">
             {t("price")}: ${product.price}
           </span>
           <div>
+           
             <Link
               href={`/products/${product.id}`}
               className="inline-flex items-center justify-center focus:outline-none text-white bg-pink-700 hover:bg-pink-800 focus:ring-4 focus:ring-pink-300 font-medium rounded-xl text-sm px-6 py-3 transition-all duration-200 transform hover:scale-105 shadow-lg hover:shadow-xl dark:bg-pink-600 dark:hover:bg-pink-700 dark:focus:ring-pink-900"
